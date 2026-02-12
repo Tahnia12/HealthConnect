@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Tension headache",
+    "bodyArea": "Head & Face",
+    "description": "A common headache type often linked to stress, posture, or muscle tightness (educational).",
+    "symptoms": ["headache", "pressure", "tight band feeling", "neck tightness", "stress", "fatigue"],
+    "keywords": ["tension headache", "stress headache", "head pain"],
+    "educationalRemedies": ["Rest and hydration", "Reduce screen strain", "Gentle neck/shoulder stretches"]
+  },
+  {
+    "name": "Migraine",
+    "bodyArea": "Head & Face",
+    "description": "A headache disorder that may involve nausea and sensitivity to light or sound (educational).",
+    "symptoms": ["headache", "nausea", "light sensitivity", "sound sensitivity", "throbbing pain", "vomiting"],
+    "keywords": ["migraine", "aura", "throbbing headache"],
+    "educationalRemedies": ["Rest in a dark quiet room", "Hydration", "Avoid known triggers (educational)"]
+  },
+  {
+    "name": "Sinus-related headache",
+    "bodyArea": "Head & Face",
+    "description": "Head or facial pressure sometimes linked to congestion or sinus irritation (educational).",
+    "symptoms": ["headache", "facial pressure", "blocked nose", "runny nose", "pain around eyes"],
+    "keywords": ["sinus", "congestion", "facial pressure"],
+    "educationalRemedies": ["Warm fluids", "Rest", "Steam inhalation (educational)"]
+  },
+  {
+    "name": "Cluster headache",
+    "bodyArea": "Head & Face",
+    "description": "Severe one-sided headache that may occur in patterns (educational).",
+    "symptoms": ["severe headache", "one-sided pain", "watery eye", "restlessness", "eye redness"],
+    "keywords": ["cluster headache", "one-sided headache"],
+    "educationalRemedies": ["Track attack patterns", "Avoid known triggers (educational)"]
+  },
+
+  {
+    "name": "Common cold",
+    "bodyArea": "Respiratory (Nose/Throat)",
+    "description": "A mild viral infection that can cause sneezing, sore throat and congestion (educational).",
+    "symptoms": ["sore throat", "runny nose", "sneezing", "cough", "mild fever", "fatigue"],
+    "keywords": ["cold", "viral", "congestion"],
+    "educationalRemedies": ["Rest", "Warm fluids", "Honey/lemon drink (educational)"]
+  },
+  {
+    "name": "Flu-like illness",
+    "bodyArea": "Respiratory (Nose/Throat)",
+    "description": "A viral illness that can cause fever, aches, fatigue and cough (educational).",
+    "symptoms": ["fever", "body aches", "fatigue", "cough", "headache", "chills"],
+    "keywords": ["flu", "influenza", "fever"],
+    "educationalRemedies": ["Rest", "Hydration", "Monitor temperature (educational)"]
+  },
+  {
+    "name": "Sore throat irritation",
+    "bodyArea": "Respiratory (Nose/Throat)",
+    "description": "Throat discomfort sometimes caused by dryness, overuse or mild irritation (educational).",
+    "symptoms": ["sore throat", "dry throat", "pain swallowing", "hoarse voice"],
+    "keywords": ["throat", "irritation", "hoarse"],
+    "educationalRemedies": ["Warm drinks", "Avoid smoking/irritants", "Gargle warm salt water (educational)"]
+  },
+
+  {
+    "name": "Indigestion (dyspepsia)",
+    "bodyArea": "Abdomen / Digestive",
+    "description": "Discomfort in upper stomach often linked to meals or acid (educational).",
+    "symptoms": ["stomach pain", "bloating", "heartburn", "nausea", "fullness"],
+    "keywords": ["indigestion", "heartburn", "acid"],
+    "educationalRemedies": ["Smaller meals", "Avoid spicy foods", "Stay upright after eating (educational)"]
+  },
+  {
+    "name": "Gastroenteritis (stomach bug)",
+    "bodyArea": "Abdomen / Digestive",
+    "description": "Short-term digestive upset that may involve diarrhoea and vomiting (educational).",
+    "symptoms": ["stomach pain", "diarrhoea", "vomiting", "nausea", "cramps", "fever"],
+    "keywords": ["stomach bug", "gastro", "diarrhoea"],
+    "educationalRemedies": ["Hydration", "Oral rehydration fluids (educational)", "Rest"]
+  },
+
+  {
+    "name": "Carpal tunnel syndrome",
+    "bodyArea": "Arms & Hands",
+    "description": "Nerve compression in the wrist that can cause tingling, numbness or pain (educational).",
+    "symptoms": ["wrist pain", "tingling", "numbness", "hand weakness", "night symptoms"],
+    "keywords": ["carpal tunnel", "wrist", "hand"],
+    "educationalRemedies": ["Take breaks from repetitive movement", "Wrist support", "Gentle stretching (educational)"]
+  },
+  {
+    "name": "Wrist sprain/strain",
+    "bodyArea": "Arms & Hands",
+    "description": "A soft tissue injury caused by twisting, overuse or impact (educational).",
+    "symptoms": ["wrist pain", "swelling", "tenderness", "reduced movement", "bruising"],
+    "keywords": ["sprain", "strain", "injury"],
+    "educationalRemedies": ["Rest", "Cold pack (educational)", "Avoid heavy lifting temporarily"]
+  },
+
+  {
+    "name": "Muscle strain (general)",
+    "bodyArea": "Muscles / Joints",
+    "description": "Muscle discomfort or pain often linked to overuse or activity (educational).",
+    "symptoms": ["pain", "stiffness", "tenderness", "reduced movement", "swelling"],
+    "keywords": ["strain", "muscle pain", "overuse"],
+    "educationalRemedies": ["Rest the area", "Light stretching (educational)", "Gentle movement as tolerated"]
+  },
+  {
+    "name": "Lower back discomfort",
+    "bodyArea": "Back",
+    "description": "Back discomfort that can be linked to posture, strain or prolonged sitting (educational).",
+    "symptoms": ["lower back pain", "stiffness", "pain when bending", "muscle tightness"],
+    "keywords": ["back pain", "posture", "lower back"],
+    "educationalRemedies": ["Posture breaks", "Gentle stretching", "Heat pack (educational)"]
+  }
+]

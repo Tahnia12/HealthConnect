@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Basic page setup -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>HealthConnect | Home</title>
+
+  <!-- I keep ONE main stylesheet for the whole website so layout stays consistent -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- =========================================================
+       HEADER / NAV
+       I keep the same header on every page so it feels like a real website.
+       ========================================================= -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- Clicking the logo returns to the homepage -->
+      <a class="brand" href="index.html" aria-label="Go to HealthConnect home">
+        <span class="brand-badge">HC</span>
+        <span class="brand-name">HealthConnect</span>
+      </a>
+
+      <!-- Navigation links -->
+      <nav class="nav">
+        <a class="nav-link is-active" href="index.html">Home</a>
+        <a class="nav-link" href="search.html">Search</a>
+        <a class="nav-link" href="results.html">Results</a>
+        <a class="nav-link" href="disclaimer.html">Disclaimer</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       MAIN CONTENT
+       This is a simple landing page that explains what my prototype is.
+       ========================================================= -->
+  <main class="page">
+    <section class="card card-lg">
+      <h1 class="h1">HealthConnect (Educational Prototype)</h1>
+
+      <p class="lead">
+        This website is an educational tool that lets users explore symptoms
+        and see example conditions that may relate to them.
+      </p>
+
+      <!-- Calls to action -->
+      <div class="actions">
+        <a class="btn" href="search.html">Start symptom search</a>
+        <a class="btn btn-secondary" href="disclaimer.html">Read disclaimer</a>
+      </div>
+
+      <!-- Small examples (optional but helpful for IPD) -->
+      <p class="small" style="margin-top: 18px;">
+        Example searches: <strong>headache</strong> or <strong>headache, nausea</strong>
+      </p>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       I keep the disclaimer in the footer on every page.
+       "Read full disclaimer" links to disclaimer.html.
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-text">
+        <strong>Disclaimer:</strong> Educational use only — not medical advice.
+      </div>
+
+      <!-- This link MUST point to a real page (disclaimer.html) -->
+      <a class="footer-link" href="disclaimer.html">Read full disclaimer</a>
+    </div>
+  </footer>
+</body>
+</html>

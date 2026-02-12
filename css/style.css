@@ -1,0 +1,124 @@
+/* ================================
+   GLOBAL STYLING
+   I chose a sage background with a
+   forest green header to give it a
+   professional health-related look.
+================================ */
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e4ebe4; /* soft sage background */
+  color: #1e2a22;
+}
+
+/* ================================
+   HEADER
+   Forest green main colour
+================================ */
+
+.site-header {
+  background-color: #2f5d46; /* forest green */
+  padding: 15px 0;
+}
+
+.header-inner {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.brand-badge {
+  background-color: rgba(255,255,255,0.2);
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   CARD LAYOUT
+================================ */
+
+.page {
+  width: 80%;
+  margin: 40px auto;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 25px;
+}
+
+.card-lg {
+  padding: 35px;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.btn {
+  background-color: #2f5d46;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  background-color: #cfd8cf;
+  color: #1e2a22;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+.site-footer {
+  border-top: 1px solid #cdd5cd;
+  padding: 15px 0;
+  margin-top: 40px;
+}
+
+.footer-inner {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #2f5d46;
+  font-weight: 500;
+}
