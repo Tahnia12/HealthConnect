@@ -11,8 +11,13 @@ const MED_KEY_RESULTS = "hc_medicine_results";
 const MED_KEY_QUERY = "hc_medicine_query";
 const MED_KEY_CATEGORY = "hc_medicine_category";
 const MED_KEY_SAVED = "hc_saved_medicines";
-const KEY_HISTORY = "hc_search_history";
-const KEY_LAST_RESULTS_TYPE = "hc_last_results_type";
+
+/* 
+   These use the same storage values as the conditions script,
+   but I renamed the variable names here to avoid clashes.
+*/
+const MED_SHARED_KEY_HISTORY = "hc_search_history";
+const MED_SHARED_KEY_LAST_RESULTS_TYPE = "hc_last_results_type";
 
 /* 
    Holds the full medicines dataset after it is loaded.
@@ -28,7 +33,7 @@ let MEDICINES = [];
 /* 
    Returns an element from the page using its ID.
 */
-function $(id) {
+function med$(id) {
   return document.getElementById(id);
 }
 
@@ -36,7 +41,7 @@ function $(id) {
    Converts any value into a lowercase trimmed string
    so text comparisons are easier and more consistent.
 */
-function norm(value) {
+function medNorm(value) {
   return (value || "").toString().trim().toLowerCase();
 }
 
@@ -112,8 +117,8 @@ function clearSavedMedicines() {
 /* 
    Gets the shared search history from localStorage.
 */
-function getSearchHistory() {
-  return JSON.parse(localStorage.getItem(KEY_HISTORY) || "[]");
+function getMedicineSearchHistory() {
+  return JSON.parse(localStorage.getItem(MED_SHARED_KEY_HISTORY) || "[]");
 }
 
 /* 
@@ -121,8 +126,8 @@ function getSearchHistory() {
    Adds a unique ID and a readable timestamp,
    then stores the updated history list.
 */
-function saveSearchToHistory(entry) {
-  const history = getSearchHistory();
+function saveMedicineSearchToHistory(entry) {
+  const history = getMedicineSearchHistory();
 
   history.unshift({
     id: Date.now(),
@@ -130,7 +135,7 @@ function saveSearchToHistory(entry) {
     createdAt: new Date().toLocaleString()
   });
 
-  localStorage.setItem(KEY_HISTORY, JSON.stringify(history));
+  localStorage.setItem(MED_SHARED_KEY_HISTORY, JSON.stringify(history));
 }
 
 /* ===============================
@@ -146,8 +151,8 @@ function saveSearchToHistory(entry) {
    and compare dropdowns.
 */
 async function loadMedicines() {
-  const statusEl = $("medicineStatus");
-  const compareStatusEl = $("medicineCompareStatus");
+  const statusEl = med$("medicineStatus");
+  const compareStatusEl = med$("medicineCompareStatus");
 
   try {
     if (statusEl) {
@@ -198,7 +203,7 @@ async function loadMedicines() {
    medicine categories found in the dataset.
 */
 function populateMedicineCategories() {
-  const select = $("medicineCategory");
+  const select = med$("medicineCategory");
   if (!select) return;
 
   const categories = [...new Set(MEDICINES.map(m => m.category).filter(Boolean))];
@@ -224,8 +229,8 @@ function populateMedicineCategories() {
    into the search input.
 */
 function populateMedicineExamples() {
-  const box = $("medicineExamples");
-  const input = $("medicineQ");
+  const box = med$("medicineExamples");
+  const input = med$("medicineQ");
   if (!box || !input) return;
 
   const examples = [
@@ -272,17 +277,17 @@ function populateMedicineExamples() {
    and the page redirects to medicine results.
 */
 function runMedicineSearch() {
-  const input = $("medicineQ");
-  const categorySelect = $("medicineCategory");
+  const input = med$("medicineQ");
+  const categorySelect = med$("medicineCategory");
 
   if (!input) return;
 
   const rawText = input.value.trim();
   const selectedCategory = categorySelect ? categorySelect.value : "all";
-  const token = norm(rawText);
+  const token = medNorm(rawText);
 
   let results = MEDICINES.filter(item => {
-    const bag = norm([
+    const bag = medNorm([
       item.name,
       item.category,
       item.description,
@@ -301,9 +306,9 @@ function runMedicineSearch() {
   sessionStorage.setItem(MED_KEY_RESULTS, JSON.stringify(results));
   sessionStorage.setItem(MED_KEY_QUERY, rawText);
   sessionStorage.setItem(MED_KEY_CATEGORY, selectedCategory);
-  localStorage.setItem(KEY_LAST_RESULTS_TYPE, "medicine");
+  localStorage.setItem(MED_SHARED_KEY_LAST_RESULTS_TYPE, "medicine");
 
-  saveSearchToHistory({
+  saveMedicineSearchToHistory({
     type: "medicine",
     query: rawText,
     category: selectedCategory,
@@ -328,8 +333,8 @@ function runMedicineSearch() {
    important notes, and a save button.
 */
 function renderMedicineResults() {
-  const resultsEl = $("medicineResults");
-  const summaryEl = $("medicineSummary");
+  const resultsEl = med$("medicineResults");
+  const summaryEl = med$("medicineSummary");
 
   if (!resultsEl) return;
 
@@ -389,8 +394,8 @@ function renderMedicineResults() {
    buttons for removing the medicine from saved items.
 */
 function renderSavedMedicines() {
-  const savedEl = $("savedMedicinesResults");
-  const summaryEl = $("savedMedicinesSummary");
+  const savedEl = med$("savedMedicinesResults");
+  const summaryEl = med$("savedMedicinesSummary");
 
   if (!savedEl) return;
 
@@ -453,8 +458,8 @@ function renderSavedMedicines() {
    from the loaded dataset.
 */
 function populateMedicineCompareOptions() {
-  const select1 = $("medicineCompare1");
-  const select2 = $("medicineCompare2");
+  const select1 = med$("medicineCompare1");
+  const select2 = med$("medicineCompare2");
 
   if (!select1 || !select2) return;
 
@@ -474,9 +479,9 @@ function populateMedicineCompareOptions() {
    a message is shown instead.
 */
 function compareMedicines() {
-  const select1 = $("medicineCompare1");
-  const select2 = $("medicineCompare2");
-  const resultsEl = $("medicineCompareResults");
+  const select1 = med$("medicineCompare1");
+  const select2 = med$("medicineCompare2");
+  const resultsEl = med$("medicineCompareResults");
 
   if (!select1 || !select2 || !resultsEl) return;
 
@@ -526,9 +531,9 @@ function compareMedicines() {
    and clears the comparison results.
 */
 function clearMedicineCompare() {
-  const select1 = $("medicineCompare1");
-  const select2 = $("medicineCompare2");
-  const resultsEl = $("medicineCompareResults");
+  const select1 = med$("medicineCompare1");
+  const select2 = med$("medicineCompare2");
+  const resultsEl = med$("medicineCompareResults");
 
   if (select1) select1.value = "";
   if (select2) select2.value = "";
@@ -546,14 +551,14 @@ function clearMedicineCompare() {
    medicine search page.
 */
 function wireMedicineClearButton() {
-  const btn = $("medicineClearBtn");
+  const btn = med$("medicineClearBtn");
   if (!btn) return;
 
   btn.onclick = () => {
     sessionStorage.removeItem(MED_KEY_RESULTS);
     sessionStorage.removeItem(MED_KEY_QUERY);
     sessionStorage.removeItem(MED_KEY_CATEGORY);
-    localStorage.setItem(KEY_LAST_RESULTS_TYPE, "medicine");
+    localStorage.setItem(MED_SHARED_KEY_LAST_RESULTS_TYPE, "medicine");
     window.location.href = "medicine-search.html";
   };
 }
@@ -566,20 +571,29 @@ function wireMedicineClearButton() {
 /* 
    Starts the medicines feature when the DOM is ready.
 
-   Loads medicine data, connects buttons,
-   adds Enter-key search support,
-   renders saved and search results,
-   and wires the clear results button.
+   Loads medicine data only on pages that need it,
+   then connects events and renders any relevant sections.
 */
 document.addEventListener("DOMContentLoaded", async () => {
-  await loadMedicines();
+  try {
+    /* 
+       Only load the medicines dataset on pages that
+       actually need it, such as search, results, or compare.
+       The saved page can render directly from localStorage.
+    */
+    if (med$("medicineQ") || med$("medicineResults") || med$("medicineCompare1")) {
+      await loadMedicines();
+    }
+  } catch (e) {
+    console.warn("Skipping medicine load:", e);
+  }
 
-  const searchBtn = $("medicineSearchBtn");
+  const searchBtn = med$("medicineSearchBtn");
   if (searchBtn) {
     searchBtn.onclick = runMedicineSearch;
   }
 
-  const input = $("medicineQ");
+  const input = med$("medicineQ");
   if (input) {
     input.addEventListener("keydown", e => {
       if (e.key === "Enter") {
@@ -589,17 +603,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  const clearSavedMedicinesBtn = $("clearSavedMedicinesBtn");
+  const clearSavedMedicinesBtn = med$("clearSavedMedicinesBtn");
   if (clearSavedMedicinesBtn) {
     clearSavedMedicinesBtn.onclick = clearSavedMedicines;
   }
 
-  const compareBtn = $("medicineCompareBtn");
+  const compareBtn = med$("medicineCompareBtn");
   if (compareBtn) {
     compareBtn.onclick = compareMedicines;
   }
 
-  const compareClearBtn = $("medicineCompareClearBtn");
+  const compareClearBtn = med$("medicineCompareClearBtn");
   if (compareClearBtn) {
     compareClearBtn.onclick = clearMedicineCompare;
   }
