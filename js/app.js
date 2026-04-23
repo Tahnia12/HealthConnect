@@ -1,288 +1,407 @@
-/* ============================================================
-   HealthConnect - app.js
+/* ===============================
+   CONFIG
+   Main constants used across the app,
+   including the API endpoint and storage keys.
+================================ */
 
-   This file does 3 main jobs:
+const DATA_URL = "http://127.0.0.1:5001/api/conditions";
+const KEY_RESULTS = "hc_results";
+const KEY_QUERY = "hc_query";
+const KEY_AREA = "hc_area";
+const KEY_SAVED = "hc_saved_conditions";
+const KEY_HISTORY = "hc_search_history";
+const KEY_LAST_RESULTS_TYPE = "hc_last_results_type";
 
-   1) Loads my dataset from data/conditions.json
-      - so the website has “conditions + symptoms” information to search
-
-   2) Runs the search when the user clicks Search
-      - user can type 1 symptom or multiple symptoms separated by commas
-      - the system then finds which conditions match
-
-   3) Shows results on results.html
-      - it reads what I saved in sessionStorage and renders results cards
-
-   IMPORTANT:
-   - No user personal data is collected
-   - I only store the search session temporarily (sessionStorage)
-   ============================================================ */
-
-
-/* This is the path to my dataset file */
-const DATA_URL = "data/conditions.json";
-
-/* These are just names (keys) where I store things temporarily in the browser */
-const KEY_RESULTS = "hc_results"; // stores the list of matching results
-const KEY_QUERY   = "hc_query";   // stores what the user searched
-
-/* This variable will hold the full dataset once it loads */
+/* 
+   Stores the full conditions dataset
+   after loading it from the API.
+*/
 let CONDITIONS = [];
 
-/* Simple helper so I can do $("id") instead of document.getElementById("id") */
-const $ = (id) => document.getElementById(id);
+/* ===============================
+   HELPERS
+   Small reusable utility functions.
+================================ */
 
+/* 
+   Returns an element by its ID.
+*/
+function $(id) {
+  return document.getElementById(id);
+}
 
-/* ------------------------------------------------------------
-   norm() = normalise text so matching works properly
-
-   Why I need it:
-   - Users might type: " Headache " or "HEADACHE"
-   - My dataset might store: "headache"
-   - This function makes them match by:
-     1) converting to lower case
-     2) removing extra spaces
------------------------------------------------------------- */
-function norm(value){
+/* 
+   Normalizes a value by converting it to text,
+   trimming spaces, and changing it to lowercase.
+*/
+function norm(value) {
   return (value || "").toString().trim().toLowerCase();
 }
 
+/* ===============================
+   SAVED CONDITIONS
+   Handles saving and removing conditions.
+================================ */
 
-/* ------------------------------------------------------------
-   goDisclaimer() = sends user to the disclaimer page
-
-   Why I made this:
-   - The header “Disclaimer” link and footer “Read full disclaimer”
-     should always work (even if JS search fails).
------------------------------------------------------------- */
-function goDisclaimer(){
-  window.location.href = "disclaimer.html";
+/* 
+   Returns saved conditions from localStorage.
+   Falls back to an empty array when nothing is saved.
+*/
+function getSavedConditions() {
+  return JSON.parse(localStorage.getItem(KEY_SAVED) || "[]");
 }
 
+/* 
+   Checks whether a condition is already saved.
+*/
+function isConditionSaved(name) {
+  return getSavedConditions().some(item => item.name === name);
+}
 
-/* ------------------------------------------------------------
-   wireDisclaimerLinks() = makes disclaimer buttons/links work
+/* 
+   Saves or removes a condition by name.
+   If the condition already exists in saved items,
+   it gets removed. Otherwise it is found in the
+   available dataset or current results and saved.
+   
+   After updating storage, both results and saved
+   condition sections are re-rendered.
+*/
+function toggleSaveConditionByName(name) {
+  const saved = getSavedConditions();
+  const existingIndex = saved.findIndex(item => item.name === name);
 
-   What it does:
-   - If your HTML has a button/link with id="disclaimerBtn"
-     it will go to disclaimer.html
-   - If your footer link has id="footerDisclaimer"
-     it will go to disclaimer.html
------------------------------------------------------------- */
-function wireDisclaimerLinks(){
-  const btn = $("disclaimerBtn");
-  if (btn){
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      goDisclaimer();
-    });
+  if (existingIndex > -1) {
+    saved.splice(existingIndex, 1);
+  } else {
+    const allConditions = CONDITIONS.length
+      ? CONDITIONS
+      : JSON.parse(sessionStorage.getItem(KEY_RESULTS) || "[]");
+
+    const conditionToSave = allConditions.find(item => item.name === name);
+
+    if (conditionToSave) {
+      saved.push(conditionToSave);
+    }
   }
 
-  const footer = $("footerDisclaimer");
-  if (footer){
-    footer.addEventListener("click", (e) => {
-      e.preventDefault();
-      goDisclaimer();
-    });
+  localStorage.setItem(KEY_SAVED, JSON.stringify(saved));
+
+  renderResults();
+  renderSavedConditions();
+}
+
+/* ===============================
+   SHARED HISTORY
+   Handles storage and rendering of search history.
+================================ */
+
+/* 
+   Returns stored search history from localStorage.
+*/
+function getSearchHistory() {
+  return JSON.parse(localStorage.getItem(KEY_HISTORY) || "[]");
+}
+
+/* 
+   Adds a new search entry to history.
+   A unique ID and a readable timestamp are added.
+   Newest entries are placed at the beginning.
+*/
+function saveSearchToHistory(entry) {
+  const history = getSearchHistory();
+
+  history.unshift({
+    id: Date.now(),
+    ...entry,
+    createdAt: new Date().toLocaleString()
+  });
+
+  localStorage.setItem(KEY_HISTORY, JSON.stringify(history));
+}
+
+/* 
+   Restores a search from history and redirects
+   to the matching results page.
+   
+   Condition searches restore condition data.
+   Medicine searches restore medicine data.
+*/
+function reopenHistoryItem(id) {
+  const history = getSearchHistory();
+  const item = history.find(entry => entry.id === id);
+
+  if (!item) return;
+
+  if (item.type === "condition") {
+    sessionStorage.setItem(KEY_RESULTS, JSON.stringify(item.results || []));
+    sessionStorage.setItem(KEY_QUERY, item.query || "");
+    sessionStorage.setItem(KEY_AREA, item.area || "all");
+    localStorage.setItem(KEY_LAST_RESULTS_TYPE, "condition");
+    window.location.href = "results.html";
+    return;
+  }
+
+  if (item.type === "medicine") {
+    sessionStorage.setItem("hc_medicine_results", JSON.stringify(item.results || []));
+    sessionStorage.setItem("hc_medicine_query", item.query || "");
+    sessionStorage.setItem("hc_medicine_category", item.category || "all");
+    localStorage.setItem(KEY_LAST_RESULTS_TYPE, "medicine");
+    window.location.href = "medicine-results.html";
   }
 }
 
+/* 
+   Removes one history item by ID
+   and refreshes the history display.
+*/
+function deleteHistoryItem(id) {
+  let history = getSearchHistory();
+  history = history.filter(item => item.id !== id);
+  localStorage.setItem(KEY_HISTORY, JSON.stringify(history));
+  renderHistory();
+}
 
-/* ------------------------------------------------------------
-   loadDataset() = loads conditions.json into the CONDITIONS array
+/* 
+   Clears the entire search history
+   and refreshes the history section.
+*/
+function clearHistory() {
+  localStorage.removeItem(KEY_HISTORY);
+  renderHistory();
+}
 
-   What happens here:
-   1) fetch() downloads the JSON file from /data/conditions.json
-   2) response.json() converts it into usable JavaScript data
-   3) I store it in CONDITIONS so I can search it
-   4) I then use that data to populate:
-      - body area dropdown
-      - example buttons for demo
+/* 
+   Renders the search history section.
+   Shows a summary count, displays each saved search,
+   and adds buttons to reopen or delete entries.
+*/
+function renderHistory() {
+  const historyEl = $("historyResults");
+  const summaryEl = $("historySummary");
 
-   Extra note (important for your bug):
-   - If the dropdown only shows "All", it usually means either:
-     (a) CONDITIONS did not load
-     (b) bodyArea is missing/blank in the JSON objects
-     (c) the <select id="area"> was not found on the page
------------------------------------------------------------- */
-async function loadDataset(){
-  const status = $("status"); // status text element on search.html
+  if (!historyEl) return;
+
+  const history = getSearchHistory();
+
+  if (summaryEl) {
+    summaryEl.textContent = `Showing ${history.length} past search(es)`;
+  }
+
+  if (!history.length) {
+    historyEl.innerHTML = `<p>No search history yet.</p>`;
+    return;
+  }
+
+  historyEl.innerHTML = history.map(item => {
+    const typeLabel = item.type === "medicine" ? "Medicine search" : "Condition search";
+    const filterLine = item.type === "medicine"
+      ? `<p><strong>Category:</strong> ${item.category || "all"}</p>`
+      : `<p><strong>Body area:</strong> ${item.area || "all"}</p>`;
+
+    return `
+      <div class="result-item">
+        <div class="result-top">
+          <h3>${item.query || "Empty search"}</h3>
+
+          <div class="result-card-actions">
+            <button
+              class="btn"
+              type="button"
+              onclick="reopenHistoryItem(${item.id})"
+            >
+              View Again
+            </button>
+
+            <button
+              class="remove-btn"
+              type="button"
+              onclick="deleteHistoryItem(${item.id})"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <p><strong>Type:</strong> ${typeLabel}</p>
+        ${filterLine}
+        <p><strong>Results found:</strong> ${item.resultCount}</p>
+        <p><strong>Searched at:</strong> ${item.createdAt}</p>
+      </div>
+    `;
+  }).join("");
+}
+
+/* ===============================
+   CLEAR SAVED CONDITIONS
+   Removes all saved conditions at once.
+================================ */
+
+/* 
+   Clears all saved conditions from localStorage
+   and refreshes related UI sections.
+*/
+function clearSavedConditions() {
+  localStorage.removeItem(KEY_SAVED);
+  renderSavedConditions();
+  renderResults();
+}
+
+/* ===============================
+   LOAD DATASET
+   Fetches condition data from the backend.
+================================ */
+
+/* 
+   Loads the dataset from the API.
+   Updates the status text while loading,
+   stores the returned data, and initializes
+   the body area dropdown and example chips.
+*/
+async function loadDataset() {
+  const statusEl = $("status");
 
   try {
-    const response = await fetch(DATA_URL, { cache: "no-store" });
-
-    /* If the server cannot find the file, response.ok will be false */
-    if (!response.ok) throw new Error(`Dataset fetch failed: ${response.status}`);
-
-    const json = await response.json();
-
-    /* I expect the file to be an array of objects */
-    CONDITIONS = Array.isArray(json) ? json : (json.conditions || []);
-
-    /* Update the status message on the page (shows dataset loaded) */
-    if (status){
-      status.textContent = `Loaded ${CONDITIONS.length} conditions.`;
+    if (statusEl) {
+      statusEl.textContent = "Loading dataset...";
     }
 
-    /* Build body area dropdown options from data */
-    if ($("area")) populateBodyAreas();
+    const res = await fetch(DATA_URL);
 
-    /* Create example chips for quick demo */
-    if ($("examples")) populateExampleChips();
+    if (!res.ok) throw new Error("Failed to load");
 
-  } catch (error){
-    console.error(error);
+    CONDITIONS = await res.json();
 
-    /* If loading fails, show a message so I can debug */
-    if (status){
-      status.textContent = "Could not load dataset. Check: data/conditions.json and folder names.";
+    if (statusEl) {
+      statusEl.textContent = `Loaded ${CONDITIONS.length} conditions.`;
+    }
+
+    populateBodyAreas();
+    populateExampleChips();
+  } catch (err) {
+    console.error(err);
+    if (statusEl) {
+      statusEl.textContent = "Could not load dataset.";
     }
   }
 }
 
+/* ===============================
+   BODY AREA DROPDOWN
+   Fills the select input with unique body areas.
+================================ */
 
-/* ------------------------------------------------------------
-   populateBodyAreas() = fills dropdown options using dataset
-
-   Why this is useful:
-   - I don’t hardcode body areas
-   - If I add more conditions later, the dropdown updates automatically
-   - This is more scalable than manually typing options
-
-   IMPORTANT BUG FIX:
-   - This function first resets the dropdown so it doesn’t “stick”
-     on only one option.
-   - It also adds a safe fallback if bodyArea is missing in the data.
------------------------------------------------------------- */
-function populateBodyAreas(){
+/* 
+   Builds the body area dropdown from unique
+   bodyArea values found in the dataset.
+*/
+function populateBodyAreas() {
   const select = $("area");
   if (!select) return;
 
-  /* Reset dropdown completely */
-  select.innerHTML = "";
+  const areas = [...new Set(CONDITIONS.map(c => c.bodyArea).filter(Boolean))];
 
-  /* Always include the default option */
-  const allOpt = document.createElement("option");
-  allOpt.value = "all";
-  allOpt.textContent = "All";
-  select.appendChild(allOpt);
+  select.innerHTML = `<option value="all">All</option>`;
 
-  /* Collect bodyArea fields from dataset and remove duplicates */
-  const uniqueAreas = [...new Set(
-    CONDITIONS
-      .map(c => (c.bodyArea || "").trim())
-      .filter(Boolean)
-  )].sort((a,b) => a.localeCompare(b));
-
-  /* Add each unique body area as a dropdown option */
-  uniqueAreas.forEach(area => {
-    const opt = document.createElement("option");
-    opt.value = norm(area);      // internal value for filtering
-    opt.textContent = area;      // what the user sees
-    select.appendChild(opt);
+  areas.forEach(area => {
+    const option = document.createElement("option");
+    option.value = area;
+    option.textContent = area;
+    select.appendChild(option);
   });
 }
 
+/* ===============================
+   EXAMPLE CHIPS
+   Creates clickable search examples.
+================================ */
 
-/* ------------------------------------------------------------
-   populateExampleChips() = creates clickable example searches
-
-   Why I add these:
-   - For IPD demo, I can quickly show the system works
-   - It also helps users understand input format
------------------------------------------------------------- */
-function populateExampleChips(){
+/* 
+   Builds example search chips and places them
+   inside the examples container.
+   Clicking a chip fills the input box.
+*/
+function populateExampleChips() {
   const box = $("examples");
   const input = $("q");
+
   if (!box || !input) return;
 
   const examples = [
     "headache",
-    "headache, nausea, light sensitivity",
+    "headache, nausea",
+    "sore throat, fever",
     "wrist pain",
-    "sore throat, fever"
+    "stomach pain, nausea",
+    "lower back pain"
   ];
 
   box.innerHTML = "";
 
   examples.forEach(text => {
     const btn = document.createElement("button");
-    btn.type = "button";
     btn.className = "chip";
+    btn.type = "button";
     btn.textContent = text;
 
-    /* Clicking a chip fills the input box */
-    btn.addEventListener("click", () => {
+    btn.onclick = () => {
       input.value = text;
       input.focus();
-    });
+    };
 
     box.appendChild(btn);
   });
 }
 
+/* ===============================
+   SEARCH FUNCTION
+   Matches search text against the dataset.
+================================ */
 
-/* ------------------------------------------------------------
-   runSearch() = the main search logic
+/* 
+   Runs the search using the text input
+   and selected body area.
+   
+   Search text is split into comma-separated tokens.
+   Each condition receives a score based on how many
+   tokens match its name, description, body area,
+   symptoms, or keywords.
+   
+   Matching results are stored in sessionStorage,
+   history is updated, and the user is redirected
+   to the results page.
+*/
+function runSearch() {
+  const input = $("q");
+  const areaSelect = $("area");
 
-   Steps:
-   1) Read what the user typed in the symptom box
-   2) Split by commas → list of symptoms
-   3) For each condition in the dataset:
-      - check how many symptoms match
-      - give it a score
-   4) Filter by body area if user selected a specific one
-   5) Sort results by highest score
-   6) Save results in sessionStorage
-   7) Redirect user to results.html
+  if (!input) return;
 
-   IMPORTANT BUG NOTE:
-   - If CONDITIONS is empty, it means dataset failed to load,
-     so searching would always show 0 results.
------------------------------------------------------------- */
-function runSearch(){
-  const rawText = ($("q")?.value || "").trim();
-  const selectedArea = norm($("area")?.value || "all");
+  const rawText = input.value;
+  const selectedArea = areaSelect ? areaSelect.value : "all";
 
-  /* If dataset didn’t load, stop early and show message */
-  if (!CONDITIONS.length){
-    const status = $("status");
-    if (status){
-      status.textContent = "Dataset not loaded yet. Make sure you are running via a local server (python -m http.server).";
-    }
-    return;
-  }
-
-  /* Split symptoms by comma: "a, b" => ["a","b"] */
   const tokens = rawText
     .split(",")
-    .map(s => norm(s))
+    .map(t => norm(t))
     .filter(Boolean);
 
-  const scored = CONDITIONS.map(condition => {
-
-    /* bag = searchable text that represents the condition */
-    const bag = [
-      norm(condition.name),
-      norm(condition.description),
-      norm(condition.bodyArea),
-      (condition.symptoms || []).map(norm).join(" "),
-      (condition.keywords || []).map(norm).join(" ")
-    ].join(" ");
+  let results = CONDITIONS.map(condition => {
+    const bag = norm([
+      condition.name,
+      condition.description,
+      condition.bodyArea,
+      ...(condition.symptoms || []),
+      ...(condition.keywords || [])
+    ].join(" "));
 
     let score = 0;
 
-    /* If user typed nothing, show everything */
-    if (tokens.length === 0){
-      score = 1;
-    } else {
-      /* Increase score for each token found in the condition “bag” */
-      tokens.forEach(t => {
-        if (bag.includes(t)) score += 1;
-      });
-    }
+    tokens.forEach(token => {
+      if (bag.includes(token)) {
+        score++;
+      }
+    });
 
-    /* Return the condition plus the score */
     return {
       ...condition,
       _score: score,
@@ -290,138 +409,284 @@ function runSearch(){
     };
   });
 
-  /* Remove conditions that had no matching symptoms */
-  let results = scored.filter(c => c._score > 0);
-
-  /* Filter by body area if not "all" */
-  if (selectedArea !== "all"){
-    results = results.filter(c => norm(c.bodyArea) === selectedArea);
+  if (selectedArea !== "all") {
+    results = results.filter(c => c.bodyArea === selectedArea);
   }
 
-  /* Sort best match first */
-  results.sort((a, b) => b._score - a._score);
+  if (tokens.length > 0) {
+    results = results.filter(c => c._score > 0);
+    results.sort((a, b) => b._score - a._score);
+  }
 
-  /* Save results and query so results.html can display them */
   sessionStorage.setItem(KEY_RESULTS, JSON.stringify(results));
-  sessionStorage.setItem(KEY_QUERY, JSON.stringify({ tokens, selectedArea }));
+  sessionStorage.setItem(KEY_QUERY, rawText);
+  sessionStorage.setItem(KEY_AREA, selectedArea);
+  localStorage.setItem(KEY_LAST_RESULTS_TYPE, "condition");
 
-  /* Move to results page */
+  saveSearchToHistory({
+    type: "condition",
+    query: rawText,
+    area: selectedArea,
+    resultCount: results.length,
+    results
+  });
+
   window.location.href = "results.html";
 }
 
+/* ===============================
+   RESULT TAB REDIRECT
+   Sends the user to the correct results page
+   based on the last search type used.
+================================ */
 
-/* ------------------------------------------------------------
-   renderResults() = shows the result cards on results.html
+/* 
+   Redirects between results pages when the stored
+   last search type does not match the current page.
+*/
+function routeResultsPageIfNeeded() {
+  const lastType = localStorage.getItem(KEY_LAST_RESULTS_TYPE) || "condition";
+  const page = window.location.pathname.split("/").pop();
 
-   How it works:
-   - reads sessionStorage
-   - builds HTML cards
-   - inserts them into the results container
------------------------------------------------------------- */
-function renderResults(){
+  if (page === "results.html" && lastType === "medicine") {
+    window.location.replace("medicine-results.html");
+  }
+
+  if (page === "medicine-results.html" && lastType === "condition") {
+    window.location.replace("results.html");
+  }
+}
+
+/* ===============================
+   RENDER RESULTS PAGE
+   Displays condition search results.
+================================ */
+
+/* 
+   Renders stored search results onto the results page.
+   Shows summary text, condition details, optional match
+   score, symptoms, educational guidance, and save button.
+*/
+function renderResults() {
   const resultsEl = $("results");
   const summaryEl = $("summary");
+
   if (!resultsEl) return;
 
-  const query = JSON.parse(sessionStorage.getItem(KEY_QUERY) || "{}");
-  const data  = JSON.parse(sessionStorage.getItem(KEY_RESULTS) || "[]");
+  const results = JSON.parse(sessionStorage.getItem(KEY_RESULTS) || "[]");
+  const query = sessionStorage.getItem(KEY_QUERY) || "";
+  const area = sessionStorage.getItem(KEY_AREA) || "all";
 
-  const tokens = query.tokens || [];
-  const area   = query.selectedArea || "all";
+  if (summaryEl) {
+    summaryEl.textContent =
+      `Showing ${results.length} result(s) for "${query || "all"}"` +
+      (area !== "all" ? ` in ${area}` : "");
+  }
 
-  /* Build summary text */
-  const summaryText =
-    tokens.length === 0
-      ? `Showing all conditions${area !== "all" ? " | Body area: " + area : ""}.`
-      : `Showing ${data.length} result(s) for: "${tokens.join(", ")}"${area !== "all" ? " | Body area: " + area : ""}.`;
-
-  if (summaryEl) summaryEl.textContent = summaryText;
-
-  /* If no results found */
-  if (!data.length){
-    resultsEl.innerHTML = `
-      <div class="card">
-        <p>No results found. Try different symptoms or change the body area.</p>
-      </div>`;
+  if (!results.length) {
+    resultsEl.innerHTML = `<p>No results found</p>`;
     return;
   }
 
-  /* Build result cards */
-  resultsEl.innerHTML = data.map(item => {
+  resultsEl.innerHTML = results.map(item => {
+    const scoreLine =
+      item._tokenCount > 1
+        ? `<p class="small"><strong>Match score:</strong> ${item._score}/${item._tokenCount}</p>`
+        : "";
 
-    const symptoms = (item.symptoms || []).slice(0, 8);
-    const remedies = (item.educationalRemedies || []).slice(0, 5);
-
-    /* Only show match score if user typed multiple symptoms */
-    const scoreLine = item._tokenCount > 1
-      ? `<p class="small"><strong>Match score:</strong> ${item._score}/${item._tokenCount}</p>`
+    const symptomsLine = item.symptoms?.length
+      ? `<p><strong>Symptoms:</strong> ${item.symptoms.join(", ")}</p>`
       : "";
+
+    const remediesLine = item.educationalRemedies?.length
+      ? `
+        <p><strong>Educational guidance:</strong></p>
+        <ul>
+          ${item.educationalRemedies.map(r => `<li>${r}</li>`).join("")}
+        </ul>
+      `
+      : "";
+
+    const activeClass = isConditionSaved(item.name) ? "active" : "";
+    const safeName = item.name.replace(/'/g, "\\'");
 
     return `
       <div class="result-item">
-        <h3>${item.name}</h3>
-        <p>${item.description || ""}</p>
-
-        ${scoreLine}
-
-        <div class="tags">
-          ${item.bodyArea ? `<span class="tag">${item.bodyArea}</span>` : ""}
-          ${(item.keywords || []).slice(0,6).map(k => `<span class="tag">${k}</span>`).join("")}
+        <div class="result-top">
+          <h3>${item.name}</h3>
+          <button
+            class="save-btn ${activeClass}"
+            type="button"
+            onclick="toggleSaveConditionByName('${safeName}')"
+            aria-label="Save ${item.name}"
+          >
+            ★
+          </button>
         </div>
 
-        ${symptoms.length ? `
-          <p class="small"><strong>Symptoms:</strong> ${symptoms.join(", ")}</p>
-        ` : ""}
-
-        ${remedies.length ? `
-          <p class="small"><strong>Educational guidance (not treatment):</strong></p>
-          <ul class="small">
-            ${remedies.map(r => `<li>${r}</li>`).join("")}
-          </ul>
-        ` : ""}
+        <p>${item.description || ""}</p>
+        <p><strong>Body area:</strong> ${item.bodyArea}</p>
+        ${scoreLine}
+        ${symptomsLine}
+        ${remediesLine}
       </div>
     `;
   }).join("");
 }
 
+/* ===============================
+   RENDER SAVED CONDITIONS PAGE
+   Displays all saved conditions.
+================================ */
 
-/* ------------------------------------------------------------
-   When page loads:
-   - Set disclaimer links on ALL pages
-   - If we are on search.html -> load dataset and set listeners
-   - If we are on results.html -> render results
------------------------------------------------------------- */
-document.addEventListener("DOMContentLoaded", () => {
+/* 
+   Renders all saved conditions from localStorage.
+   Shows condition details and buttons to unsave them.
+*/
+function renderSavedConditions() {
+  const savedEl = $("savedResults");
+  const summaryEl = $("savedSummary");
 
-  /* Make disclaimer navigation work everywhere */
-  wireDisclaimerLinks();
+  if (!savedEl) return;
 
-  /* Search page */
-  if ($("searchBtn")){
-    loadDataset();
+  const saved = getSavedConditions();
 
-    /* Clicking Search runs the search */
-    $("searchBtn").addEventListener("click", runSearch);
+  if (summaryEl) {
+    summaryEl.textContent = `Showing ${saved.length} saved condition(s)`;
+  }
 
-    /* Pressing Enter in input runs the search too */
-    $("q").addEventListener("keydown", (e) => {
-      if (e.key === "Enter") runSearch();
+  if (!saved.length) {
+    savedEl.innerHTML = `<p>No saved conditions yet.</p>`;
+    return;
+  }
+
+  savedEl.innerHTML = saved.map(item => {
+    const symptomsLine = item.symptoms?.length
+      ? `<p><strong>Symptoms:</strong> ${item.symptoms.join(", ")}</p>`
+      : "";
+
+    const remediesLine = item.educationalRemedies?.length
+      ? `
+        <p><strong>Educational guidance:</strong></p>
+        <ul>
+          ${item.educationalRemedies.map(r => `<li>${r}</li>`).join("")}
+        </ul>
+      `
+      : "";
+
+    const safeName = item.name.replace(/'/g, "\\'");
+
+    return `
+      <div class="result-item">
+        <div class="result-top">
+          <h3>${item.name}</h3>
+
+          <div class="result-card-actions">
+            <button
+              class="save-btn active"
+              type="button"
+              onclick="toggleSaveConditionByName('${safeName}')"
+            >
+              ★
+            </button>
+
+            <button
+              class="remove-btn"
+              type="button"
+              onclick="toggleSaveConditionByName('${safeName}')"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+
+        <p>${item.description || ""}</p>
+        <p><strong>Body area:</strong> ${item.bodyArea}</p>
+        ${symptomsLine}
+        ${remediesLine}
+      </div>
+    `;
+  }).join("");
+}
+
+/* ===============================
+   CLEAR RESULTS BUTTON
+   Wires the button that clears current results.
+================================ */
+
+/* 
+   Connects the clear button to logic that removes
+   stored results, resets summary text, and shows
+   an empty results message.
+*/
+function wireClearButton() {
+  const btn = $("clearBtn");
+  if (!btn) return;
+
+  btn.onclick = (e) => {
+    e.preventDefault();
+
+    sessionStorage.removeItem(KEY_RESULTS);
+    sessionStorage.removeItem(KEY_QUERY);
+    sessionStorage.removeItem(KEY_AREA);
+    localStorage.setItem(KEY_LAST_RESULTS_TYPE, "condition");
+
+    const resultsEl = $("results");
+    const summaryEl = $("summary");
+
+    if (summaryEl) {
+      summaryEl.textContent = `Showing 0 result(s) for "all"`;
+    }
+
+    if (resultsEl) {
+      resultsEl.innerHTML = `<p>No results found</p>`;
+    }
+  };
+}
+
+/* ===============================
+   INIT
+   Starts the app once the DOM is ready.
+================================ */
+
+/* 
+   Runs on page load.
+   Handles page routing, loads the dataset,
+   attaches button and keyboard events,
+   and renders page sections.
+*/
+document.addEventListener("DOMContentLoaded", async () => {
+  routeResultsPageIfNeeded();
+
+  await loadDataset();
+
+  const searchBtn = $("searchBtn");
+  if (searchBtn) {
+    searchBtn.onclick = runSearch;
+  }
+
+  const input = $("q");
+  if (input) {
+    input.addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        runSearch();
+      }
     });
   }
 
-  /* Results page */
-  if ($("results")){
-    renderResults();
-
-    /* Clear button deletes results so the page resets */
-    const clearBtn = $("clearBtn");
-    if (clearBtn){
-      clearBtn.addEventListener("click", () => {
-        sessionStorage.removeItem(KEY_RESULTS);
-        sessionStorage.removeItem(KEY_QUERY);
-        $("results").innerHTML = `<div class="card"><p>Cleared. Start a new search.</p></div>`;
-        if ($("summary")) $("summary").textContent = "";
-      });
-    }
+  const clearSavedBtn = $("clearSavedBtn");
+  if (clearSavedBtn) {
+    clearSavedBtn.onclick = clearSavedConditions;
   }
+
+  const clearHistoryBtn = $("clearHistoryBtn");
+  if (clearHistoryBtn) {
+    clearHistoryBtn.onclick = clearHistory;
+  }
+
+  renderResults();
+  renderSavedConditions();
+  renderHistory();
+  wireClearButton();
 });

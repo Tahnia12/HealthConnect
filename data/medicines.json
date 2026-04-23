@@ -1,0 +1,808 @@
+[
+  {
+    "name": "Paracetamol",
+    "category": "Pain relief / Fever",
+    "usedFor": ["headache", "fever", "mild pain", "muscle aches"],
+    "description": "A common over-the-counter medicine used to reduce pain and fever (educational).",
+    "commonSideEffects": ["rare when used correctly"],
+    "importantNotes": ["Follow the label instructions", "Do not exceed the stated dose"]
+  },
+  {
+    "name": "Ibuprofen",
+    "category": "Anti-inflammatory",
+    "usedFor": ["headache", "muscle pain", "joint pain", "fever", "period pain"],
+    "description": "A common anti-inflammatory medicine often used for pain, swelling and fever (educational).",
+    "commonSideEffects": ["stomach irritation", "indigestion"],
+    "importantNotes": ["Take with or after food if advised on the label", "Not suitable for everyone"]
+  },
+  {
+    "name": "Cetirizine",
+    "category": "Antihistamine",
+    "usedFor": ["allergies", "hay fever", "itching", "watery eyes"],
+    "description": "An antihistamine commonly used to help manage allergy symptoms (educational).",
+    "commonSideEffects": ["drowsiness in some people", "dry mouth"],
+    "importantNotes": ["Follow label guidance", "Check suitability before use"]
+  },
+  {
+    "name": "Loratadine",
+    "category": "Antihistamine",
+    "usedFor": ["allergies", "hay fever", "itching", "sneezing"],
+    "description": "A common antihistamine used for allergy-related symptoms (educational).",
+    "commonSideEffects": ["headache", "dry mouth"],
+    "importantNotes": ["Follow label guidance", "Check suitability before use"]
+  },
+  {
+    "name": "Amoxicillin",
+    "category": "Antibiotic",
+    "usedFor": ["some bacterial infections"],
+    "description": "An antibiotic used for certain bacterial infections (educational).",
+    "commonSideEffects": ["nausea", "diarrhoea", "rash"],
+    "importantNotes": ["Usually requires prescription", "Not used for all infections"]
+  },
+  {
+    "name": "Penicillin V",
+    "category": "Antibiotic",
+    "usedFor": ["some bacterial throat and dental infections"],
+    "description": "An antibiotic used for some bacterial infections (educational).",
+    "commonSideEffects": ["nausea", "vomiting", "rash"],
+    "importantNotes": ["Usually requires prescription", "Only used when appropriate"]
+  },
+  {
+    "name": "Omeprazole",
+    "category": "Digestive / Heartburn",
+    "usedFor": ["heartburn", "acid reflux", "indigestion"],
+    "description": "A medicine used to reduce stomach acid in certain digestive conditions (educational).",
+    "commonSideEffects": ["headache", "stomach upset"],
+    "importantNotes": ["Use according to label or professional advice", "Not all indigestion needs this medicine"]
+  },
+  {
+    "name": "Loperamide",
+    "category": "Digestive / Diarrhoea",
+    "usedFor": ["diarrhoea"],
+    "description": "A medicine sometimes used for short-term relief of diarrhoea symptoms (educational).",
+    "commonSideEffects": ["constipation", "stomach cramps"],
+    "importantNotes": ["Hydration is important", "Read warnings carefully"]
+  },
+  {
+    "name": "Oral rehydration salts",
+    "category": "Hydration",
+    "usedFor": ["diarrhoea", "vomiting", "dehydration support"],
+    "description": "A product used to help replace fluids and salts lost through diarrhoea or vomiting (educational).",
+    "commonSideEffects": ["usually minimal when used correctly"],
+    "importantNotes": ["Use exactly as instructed", "Seek help if symptoms are severe or persistent"]
+  },
+  {
+    "name": "Saline nasal spray",
+    "category": "Cold and Flu / Nasal",
+    "usedFor": ["blocked nose", "nasal dryness", "congestion"],
+    "description": "A simple nasal spray used to help moisturise the nose and reduce congestion symptoms (educational).",
+    "commonSideEffects": ["mild temporary irritation"],
+    "importantNotes": ["Use as directed on packaging"]
+  },
+  {
+    "name": "Guaifenesin",
+    "category": "Cough and Throat",
+    "usedFor": ["chesty cough", "mucus build-up"],
+    "description": "A medicine commonly used to help loosen mucus in productive coughs (educational).",
+    "commonSideEffects": ["nausea", "dizziness"],
+    "importantNotes": ["Read the label carefully", "Not every cough needs this type of medicine"]
+  },
+  {
+    "name": "Dextromethorphan",
+    "category": "Cough and Throat",
+    "usedFor": ["dry cough"],
+    "description": "A cough suppressant used in some products for dry cough relief (educational).",
+    "commonSideEffects": ["drowsiness", "dizziness"],
+    "importantNotes": ["Check product instructions", "Not suitable for everyone"]
+  },
+  {
+    "name": "Hydrocortisone cream",
+    "category": "Skin treatments",
+    "usedFor": ["itching", "eczema flare-ups", "mild skin inflammation"],
+    "description": "A mild topical steroid cream used for certain inflammatory skin symptoms (educational).",
+    "commonSideEffects": ["skin irritation", "burning sensation"],
+    "importantNotes": ["Use only as directed", "Not for all skin conditions"]
+  },
+  {
+    "name": "Clotrimazole cream",
+    "category": "Antifungal",
+    "usedFor": ["fungal skin infections", "athlete's foot", "ringworm"],
+    "description": "An antifungal treatment used for certain fungal skin infections (educational).",
+    "commonSideEffects": ["mild skin irritation"],
+    "importantNotes": ["Use for the full recommended period", "Read packaging carefully"]
+  },
+
+
+{
+  "name": "Aspirin",
+  "category": "Pain relief / Anti-inflammatory",
+  "usedFor": ["headache", "pain", "fever", "inflammation"],
+  "description": "A medicine used to relieve pain, reduce inflammation, and lower fever (educational).",
+  "commonSideEffects": ["stomach irritation", "heartburn"],
+  "importantNotes": ["Not suitable for children under 16", "Take with food if advised"]
+},
+{
+  "name": "Naproxen",
+  "category": "Anti-inflammatory",
+  "usedFor": ["joint pain", "muscle pain", "arthritis"],
+  "description": "An anti-inflammatory medicine used for pain and swelling (educational).",
+  "commonSideEffects": ["stomach upset", "dizziness"],
+  "importantNotes": ["May not be suitable for people with stomach issues"]
+},
+{
+  "name": "Codeine",
+  "category": "Pain relief",
+  "usedFor": ["moderate pain"],
+  "description": "A stronger pain reliever sometimes used when other medicines are not enough (educational).",
+  "commonSideEffects": ["drowsiness", "constipation"],
+  "importantNotes": ["Can be addictive", "Use only as directed"]
+},
+{
+  "name": "Tramadol",
+  "category": "Pain relief",
+  "usedFor": ["moderate to severe pain"],
+  "description": "A prescription painkiller used for more severe pain (educational).",
+  "commonSideEffects": ["dizziness", "nausea"],
+  "importantNotes": ["Requires medical supervision"]
+},
+{
+  "name": "Ranitidine",
+  "category": "Digestive / Heartburn",
+  "usedFor": ["acid reflux", "heartburn"],
+  "description": "A medicine used to reduce stomach acid (educational).",
+  "commonSideEffects": ["headache", "constipation"],
+  "importantNotes": ["Check availability in your region"]
+},
+{
+  "name": "Esomeprazole",
+  "category": "Digestive / Heartburn",
+  "usedFor": ["acid reflux", "heartburn"],
+  "description": "A proton pump inhibitor used to reduce stomach acid (educational).",
+  "commonSideEffects": ["headache", "stomach upset"],
+  "importantNotes": ["Use as directed"]
+},
+{
+  "name": "Antacid tablets",
+  "category": "Digestive",
+  "usedFor": ["indigestion", "heartburn"],
+  "description": "A fast-acting treatment to neutralise stomach acid (educational).",
+  "commonSideEffects": ["bloating", "constipation"],
+  "importantNotes": ["Short-term relief only"]
+},
+{
+  "name": "Simethicone",
+  "category": "Digestive",
+  "usedFor": ["bloating", "gas"],
+  "description": "Used to relieve trapped gas in the digestive system (educational).",
+  "commonSideEffects": ["rare"],
+  "importantNotes": ["Usually safe when used correctly"]
+},
+{
+  "name": "Senna",
+  "category": "Digestive",
+  "usedFor": ["constipation"],
+  "description": "A natural laxative used to relieve constipation (educational).",
+  "commonSideEffects": ["stomach cramps"],
+  "importantNotes": ["Short-term use only"]
+},
+{
+  "name": "Bisacodyl",
+  "category": "Digestive",
+  "usedFor": ["constipation"],
+  "description": "A stimulant laxative for short-term constipation relief (educational).",
+  "commonSideEffects": ["cramps", "diarrhoea"],
+  "importantNotes": ["Do not use long-term"]
+},
+{
+  "name": "Diphenhydramine",
+  "category": "Antihistamine",
+  "usedFor": ["allergies", "itching"],
+  "description": "An antihistamine often used for allergies and sleep aid (educational).",
+  "commonSideEffects": ["drowsiness"],
+  "importantNotes": ["May cause sleepiness"]
+},
+{
+  "name": "Fexofenadine",
+  "category": "Antihistamine",
+  "usedFor": ["allergies", "hay fever"],
+  "description": "A non-drowsy antihistamine for allergy symptoms (educational).",
+  "commonSideEffects": ["headache"],
+  "importantNotes": ["Follow dosage instructions"]
+},
+{
+  "name": "Chlorphenamine",
+  "category": "Antihistamine",
+  "usedFor": ["allergies"],
+  "description": "An older antihistamine used for allergy relief (educational).",
+  "commonSideEffects": ["drowsiness"],
+  "importantNotes": ["Avoid driving if affected"]
+},
+{
+  "name": "Pseudoephedrine",
+  "category": "Cold and Flu",
+  "usedFor": ["blocked nose", "sinus congestion"],
+  "description": "A decongestant used for nasal congestion (educational).",
+  "commonSideEffects": ["insomnia", "increased heart rate"],
+  "importantNotes": ["Not suitable for everyone"]
+},
+{
+  "name": "Phenylephrine",
+  "category": "Cold and Flu",
+  "usedFor": ["nasal congestion"],
+  "description": "A decongestant found in many cold medicines (educational).",
+  "commonSideEffects": ["headache"],
+  "importantNotes": ["Effectiveness may vary"]
+},
+{
+  "name": "Menthol lozenges",
+  "category": "Cough and Throat",
+  "usedFor": ["sore throat"],
+  "description": "Lozenges used to soothe throat irritation (educational).",
+  "commonSideEffects": ["mild irritation"],
+  "importantNotes": ["Use as needed"]
+},
+{
+  "name": "Honey-based cough syrup",
+  "category": "Cough and Throat",
+  "usedFor": ["cough"],
+  "description": "A soothing syrup for mild cough symptoms (educational).",
+  "commonSideEffects": ["rare"],
+  "importantNotes": ["Not for infants under 1 year"]
+},
+{
+  "name": "Zinc supplements",
+  "category": "Supplements",
+  "usedFor": ["immune support"],
+  "description": "A supplement sometimes used during colds (educational).",
+  "commonSideEffects": ["nausea"],
+  "importantNotes": ["Do not exceed recommended dose"]
+},
+{
+  "name": "Vitamin C",
+  "category": "Supplements",
+  "usedFor": ["immune support"],
+  "description": "A common vitamin supplement (educational).",
+  "commonSideEffects": ["stomach upset"],
+  "importantNotes": ["Balanced diet is important"]
+},
+{
+  "name": "Iron supplements",
+  "category": "Supplements",
+  "usedFor": ["iron deficiency"],
+  "description": "Used to treat low iron levels (educational).",
+  "commonSideEffects": ["constipation"],
+  "importantNotes": ["Take as directed"]
+},
+{
+  "name": "Calcium supplements",
+  "category": "Supplements",
+  "usedFor": ["bone health"],
+  "description": "Supports bone strength (educational).",
+  "commonSideEffects": ["constipation"],
+  "importantNotes": ["May interact with other medicines"]
+},
+{
+  "name": "Magnesium supplements",
+  "category": "Supplements",
+  "usedFor": ["muscle cramps"],
+  "description": "Used for muscle and nerve function (educational).",
+  "commonSideEffects": ["diarrhoea"],
+  "importantNotes": ["Follow dosage guidance"]
+},
+{
+  "name": "Insulin",
+  "category": "Hormone therapy",
+  "usedFor": ["diabetes"],
+  "description": "A hormone used to control blood sugar (educational).",
+  "commonSideEffects": ["low blood sugar"],
+  "importantNotes": ["Requires medical supervision"]
+},
+{
+  "name": "Metformin",
+  "category": "Diabetes",
+  "usedFor": ["type 2 diabetes"],
+  "description": "Helps control blood sugar levels (educational).",
+  "commonSideEffects": ["nausea"],
+  "importantNotes": ["Prescription required"]
+},
+{
+  "name": "Amlodipine",
+  "category": "Heart / Blood pressure",
+  "usedFor": ["high blood pressure"],
+  "description": "Used to treat hypertension (educational).",
+  "commonSideEffects": ["swelling", "dizziness"],
+  "importantNotes": ["Prescription required"]
+},
+{
+  "name": "Atorvastatin",
+  "category": "Cholesterol",
+  "usedFor": ["high cholesterol"],
+  "description": "Used to lower cholesterol levels (educational).",
+  "commonSideEffects": ["muscle pain"],
+  "importantNotes": ["Requires monitoring"]
+},
+{
+  "name": "Salbutamol inhaler",
+  "category": "Respiratory",
+  "usedFor": ["asthma", "wheezing"],
+  "description": "A fast-acting inhaler for breathing relief (educational).",
+  "commonSideEffects": ["tremor", "fast heartbeat"],
+  "importantNotes": ["Use as directed"]
+},
+{
+  "name": "Beclometasone inhaler",
+  "category": "Respiratory",
+  "usedFor": ["asthma"],
+  "description": "A preventer inhaler to reduce inflammation (educational).",
+  "commonSideEffects": ["sore throat"],
+  "importantNotes": ["Use regularly as prescribed"]
+},
+{
+  "name": "Clarithromycin",
+  "category": "Antibiotic",
+  "usedFor": ["bacterial infections"],
+  "description": "An antibiotic used for certain infections (educational).",
+  "commonSideEffects": ["nausea"],
+  "importantNotes": ["Prescription required"]
+},
+{
+  "name": "Azithromycin",
+  "category": "Antibiotic",
+  "usedFor": ["bacterial infections"],
+  "description": "Used to treat various bacterial infections (educational).",
+  "commonSideEffects": ["diarrhoea"],
+  "importantNotes": ["Complete full course"]
+}
+,
+{
+  "name": "Fluoxetine",
+  "category": "Mental health",
+  "usedFor": ["depression", "anxiety"],
+  "description": "An antidepressant used for mood disorders (educational).",
+  "commonSideEffects": ["nausea", "sleep issues"],
+  "importantNotes": ["Takes time to work", "Prescription required"]
+},
+{
+  "name": "Sertraline",
+  "category": "Mental health",
+  "usedFor": ["depression", "anxiety"],
+  "description": "A commonly prescribed antidepressant (educational).",
+  "commonSideEffects": ["dizziness", "dry mouth"],
+  "importantNotes": ["Do not stop suddenly"]
+},
+{
+  "name": "Citalopram",
+  "category": "Mental health",
+  "usedFor": ["depression"],
+  "description": "An SSRI antidepressant (educational).",
+  "commonSideEffects": ["nausea", "fatigue"],
+  "importantNotes": ["Follow medical advice"]
+},
+{
+  "name": "Diazepam",
+  "category": "Mental health",
+  "usedFor": ["anxiety", "muscle spasms"],
+  "description": "A sedative used short-term (educational).",
+  "commonSideEffects": ["drowsiness"],
+  "importantNotes": ["Can be addictive"]
+},
+{
+  "name": "Melatonin",
+  "category": "Sleep",
+  "usedFor": ["sleep problems"],
+  "description": "A hormone supplement used for sleep (educational).",
+  "commonSideEffects": ["drowsiness"],
+  "importantNotes": ["Use short-term if advised"]
+},
+{
+  "name": "Zolpidem",
+  "category": "Sleep",
+  "usedFor": ["insomnia"],
+  "description": "A prescription sleep aid (educational).",
+  "commonSideEffects": ["dizziness"],
+  "importantNotes": ["Short-term use only"]
+},
+{
+  "name": "Prednisolone",
+  "category": "Steroid",
+  "usedFor": ["inflammation", "allergic reactions"],
+  "description": "A steroid used to reduce inflammation (educational).",
+  "commonSideEffects": ["increased appetite"],
+  "importantNotes": ["Do not stop suddenly"]
+},
+{
+  "name": "Betamethasone cream",
+  "category": "Skin treatments",
+  "usedFor": ["eczema", "inflammation"],
+  "description": "A stronger topical steroid (educational).",
+  "commonSideEffects": ["skin thinning"],
+  "importantNotes": ["Use for short periods"]
+},
+{
+  "name": "Fusidic acid cream",
+  "category": "Antibiotic (topical)",
+  "usedFor": ["skin infections"],
+  "description": "Used to treat bacterial skin infections (educational).",
+  "commonSideEffects": ["mild irritation"],
+  "importantNotes": ["Use as prescribed"]
+},
+{
+  "name": "Aciclovir",
+  "category": "Antiviral",
+  "usedFor": ["cold sores", "herpes"],
+  "description": "An antiviral medicine (educational).",
+  "commonSideEffects": ["headache"],
+  "importantNotes": ["Works best early"]
+},
+{
+  "name": "Oseltamivir",
+  "category": "Antiviral",
+  "usedFor": ["flu"],
+  "description": "Used to treat influenza (educational).",
+  "commonSideEffects": ["nausea"],
+  "importantNotes": ["Start early"]
+},
+{
+  "name": "Doxycycline",
+  "category": "Antibiotic",
+  "usedFor": ["infections", "acne"],
+  "description": "A broad-spectrum antibiotic (educational).",
+  "commonSideEffects": ["sun sensitivity"],
+  "importantNotes": ["Avoid sunlight exposure"]
+},
+{
+  "name": "Trimethoprim",
+  "category": "Antibiotic",
+  "usedFor": ["urinary infections"],
+  "description": "An antibiotic for UTIs (educational).",
+  "commonSideEffects": ["rash"],
+  "importantNotes": ["Complete full course"]
+},
+{
+  "name": "Co-amoxiclav",
+  "category": "Antibiotic",
+  "usedFor": ["bacterial infections"],
+  "description": "A combination antibiotic (educational).",
+  "commonSideEffects": ["diarrhoea"],
+  "importantNotes": ["Prescription required"]
+},
+{
+  "name": "Warfarin",
+  "category": "Blood thinner",
+  "usedFor": ["blood clots"],
+  "description": "Used to prevent clots (educational).",
+  "commonSideEffects": ["bleeding"],
+  "importantNotes": ["Requires monitoring"]
+},
+{
+  "name": "Apixaban",
+  "category": "Blood thinner",
+  "usedFor": ["blood clots"],
+  "description": "A newer anticoagulant (educational).",
+  "commonSideEffects": ["bleeding"],
+  "importantNotes": ["Prescription only"]
+},
+{
+  "name": "Heparin",
+  "category": "Blood thinner",
+  "usedFor": ["clot prevention"],
+  "description": "Used in hospital settings (educational).",
+  "commonSideEffects": ["bleeding"],
+  "importantNotes": ["Given under supervision"]
+},
+{
+  "name": "Levothyroxine",
+  "category": "Hormone therapy",
+  "usedFor": ["hypothyroidism"],
+  "description": "Replaces thyroid hormone (educational).",
+  "commonSideEffects": ["palpitations"],
+  "importantNotes": ["Take regularly"]
+},
+{
+  "name": "Hydrocortisone tablets",
+  "category": "Steroid",
+  "usedFor": ["hormone replacement"],
+  "description": "Used for adrenal insufficiency (educational).",
+  "commonSideEffects": ["weight gain"],
+  "importantNotes": ["Follow dosing carefully"]
+},
+{
+  "name": "Alendronic acid",
+  "category": "Bone health",
+  "usedFor": ["osteoporosis"],
+  "description": "Used to strengthen bones (educational).",
+  "commonSideEffects": ["stomach irritation"],
+  "importantNotes": ["Take upright with water"]
+},
+{
+  "name": "Sodium valproate",
+  "category": "Neurology",
+  "usedFor": ["epilepsy"],
+  "description": "Used to control seizures (educational).",
+  "commonSideEffects": ["weight gain"],
+  "importantNotes": ["Special precautions required"]
+},
+{
+  "name": "Carbamazepine",
+  "category": "Neurology",
+  "usedFor": ["epilepsy"],
+  "description": "Anti-seizure medication (educational).",
+  "commonSideEffects": ["drowsiness"],
+  "importantNotes": ["Monitor levels"]
+},
+{
+  "name": "Sumatriptan",
+  "category": "Migraine",
+  "usedFor": ["migraine"],
+  "description": "Used to treat migraine attacks (educational).",
+  "commonSideEffects": ["tingling"],
+  "importantNotes": ["Use at onset"]
+},
+{
+  "name": "Propranolol",
+  "category": "Heart / Anxiety",
+  "usedFor": ["high blood pressure", "anxiety"],
+  "description": "A beta-blocker (educational).",
+  "commonSideEffects": ["fatigue"],
+  "importantNotes": ["Do not stop suddenly"]
+},
+{
+  "name": "Bisoprolol",
+  "category": "Heart",
+  "usedFor": ["blood pressure"],
+  "description": "Used for heart conditions (educational).",
+  "commonSideEffects": ["slow heart rate"],
+  "importantNotes": ["Monitor usage"]
+},
+{
+  "name": "Ramipril",
+  "category": "Heart / Blood pressure",
+  "usedFor": ["hypertension"],
+  "description": "An ACE inhibitor (educational).",
+  "commonSideEffects": ["dry cough"],
+  "importantNotes": ["Check kidney function"]
+},
+{
+  "name": "Losartan",
+  "category": "Blood pressure",
+  "usedFor": ["hypertension"],
+  "description": "An ARB medication (educational).",
+  "commonSideEffects": ["dizziness"],
+  "importantNotes": ["Prescription required"]
+},
+{
+  "name": "Insulin glargine",
+  "category": "Diabetes",
+  "usedFor": ["blood sugar control"],
+  "description": "Long-acting insulin (educational).",
+  "commonSideEffects": ["low blood sugar"],
+  "importantNotes": ["Monitor levels"]
+},
+{
+  "name": "Gliclazide",
+  "category": "Diabetes",
+  "usedFor": ["type 2 diabetes"],
+  "description": "Helps lower blood sugar (educational).",
+  "commonSideEffects": ["hypoglycaemia"],
+  "importantNotes": ["Take with food"]
+},
+{
+  "name": "Lansoprazole",
+  "category": "Digestive",
+  "usedFor": ["acid reflux"],
+  "description": "Reduces stomach acid (educational).",
+  "commonSideEffects": ["headache"],
+  "importantNotes": ["Short-term use"]
+},
+{
+  "name": "Domperidone",
+  "category": "Digestive",
+  "usedFor": ["nausea"],
+  "description": "Used to relieve nausea (educational).",
+  "commonSideEffects": ["dry mouth"],
+  "importantNotes": ["Limited use"]
+},
+{
+  "name": "Ondansetron",
+  "category": "Digestive",
+  "usedFor": ["nausea"],
+  "description": "Used for severe nausea (educational).",
+  "commonSideEffects": ["headache"],
+  "importantNotes": ["Prescription required"]
+},
+{
+  "name": "Topical lidocaine",
+  "category": "Pain relief",
+  "usedFor": ["local pain"],
+  "description": "A numbing agent (educational).",
+  "commonSideEffects": ["skin irritation"],
+  "importantNotes": ["Use externally"]
+},
+{
+  "name": "Diclofenac gel",
+  "category": "Pain relief",
+  "usedFor": ["muscle pain"],
+  "description": "Topical anti-inflammatory (educational).",
+  "commonSideEffects": ["skin irritation"],
+  "importantNotes": ["Avoid broken skin"]
+},
+{
+  "name": "Ketoconazole shampoo",
+  "category": "Antifungal",
+  "usedFor": ["dandruff"],
+  "description": "Used for scalp conditions (educational).",
+  "commonSideEffects": ["dry scalp"],
+  "importantNotes": ["Use regularly"]
+},
+{
+  "name": "Coal tar shampoo",
+  "category": "Skin treatments",
+  "usedFor": ["psoriasis"],
+  "description": "Used for scalp conditions (educational).",
+  "commonSideEffects": ["strong smell"],
+  "importantNotes": ["Avoid eye contact"]
+},
+{
+  "name": "Epinephrine auto-injector",
+  "category": "Emergency",
+  "usedFor": ["severe allergic reaction"],
+  "description": "Used in emergencies (educational).",
+  "commonSideEffects": ["rapid heartbeat"],
+  "importantNotes": ["Emergency use only"]
+},
+{
+  "name": "Naloxone",
+  "category": "Emergency",
+  "usedFor": ["opioid overdose"],
+  "description": "Reverses opioid overdose (educational).",
+  "commonSideEffects": ["withdrawal symptoms"],
+  "importantNotes": ["Emergency use"]
+},
+{
+  "name": "Metronidazole",
+  "category": "Antibiotic",
+  "usedFor": ["bacterial infections", "gut infections"],
+  "description": "An antibiotic used for certain infections (educational).",
+  "commonSideEffects": ["nausea", "metallic taste"],
+  "importantNotes": ["Avoid alcohol while taking"]
+},
+{
+  "name": "Nitrofurantoin",
+  "category": "Antibiotic",
+  "usedFor": ["urinary tract infections"],
+  "description": "Commonly used for UTIs (educational).",
+  "commonSideEffects": ["nausea"],
+  "importantNotes": ["Take with food"]
+},
+{
+  "name": "Erythromycin",
+  "category": "Antibiotic",
+  "usedFor": ["bacterial infections"],
+  "description": "An alternative antibiotic (educational).",
+  "commonSideEffects": ["stomach cramps"],
+  "importantNotes": ["Take as prescribed"]
+},
+{
+  "name": "Spironolactone",
+  "category": "Heart / Diuretic",
+  "usedFor": ["fluid retention", "blood pressure"],
+  "description": "A potassium-sparing diuretic (educational).",
+  "commonSideEffects": ["dizziness"],
+  "importantNotes": ["Monitor potassium levels"]
+},
+{
+  "name": "Furosemide",
+  "category": "Diuretic",
+  "usedFor": ["fluid retention"],
+  "description": "A diuretic used to remove excess fluid (educational).",
+  "commonSideEffects": ["frequent urination"],
+  "importantNotes": ["Stay hydrated"]
+},
+{
+  "name": "Clopidogrel",
+  "category": "Blood thinner",
+  "usedFor": ["preventing clots"],
+  "description": "Helps prevent blood clots (educational).",
+  "commonSideEffects": ["bleeding"],
+  "importantNotes": ["Take regularly"]
+},
+{
+  "name": "Dapagliflozin",
+  "category": "Diabetes",
+  "usedFor": ["type 2 diabetes"],
+  "description": "Helps lower blood sugar levels (educational).",
+  "commonSideEffects": ["urinary infections"],
+  "importantNotes": ["Stay hydrated"]
+},
+{
+  "name": "Liraglutide",
+  "category": "Diabetes",
+  "usedFor": ["blood sugar control"],
+  "description": "Used to manage diabetes (educational).",
+  "commonSideEffects": ["nausea"],
+  "importantNotes": ["Injection-based"]
+},
+{
+  "name": "Montelukast",
+  "category": "Respiratory",
+  "usedFor": ["asthma", "allergies"],
+  "description": "Helps prevent asthma symptoms (educational).",
+  "commonSideEffects": ["headache"],
+  "importantNotes": ["Take regularly"]
+},
+{
+  "name": "Ipratropium inhaler",
+  "category": "Respiratory",
+  "usedFor": ["COPD", "breathing issues"],
+  "description": "Used to open airways (educational).",
+  "commonSideEffects": ["dry mouth"],
+  "importantNotes": ["Use as directed"]
+},
+{
+  "name": "Codeine cough syrup",
+  "category": "Cough and Throat",
+  "usedFor": ["dry cough"],
+  "description": "A cough suppressant (educational).",
+  "commonSideEffects": ["drowsiness"],
+  "importantNotes": ["Short-term use only"]
+},
+{
+  "name": "Benzocaine lozenges",
+  "category": "Cough and Throat",
+  "usedFor": ["sore throat"],
+  "description": "Numbing lozenges for throat pain (educational).",
+  "commonSideEffects": ["mild irritation"],
+  "importantNotes": ["Use as directed"]
+},
+{
+  "name": "Calamine lotion",
+  "category": "Skin treatments",
+  "usedFor": ["itching", "rash"],
+  "description": "Soothing lotion for irritated skin (educational).",
+  "commonSideEffects": ["dryness"],
+  "importantNotes": ["External use only"]
+},
+{
+  "name": "Permethrin cream",
+  "category": "Antiparasitic",
+  "usedFor": ["scabies", "lice"],
+  "description": "Used to treat skin parasites (educational).",
+  "commonSideEffects": ["skin irritation"],
+  "importantNotes": ["Follow instructions carefully"]
+},
+{
+  "name": "Terbinafine",
+  "category": "Antifungal",
+  "usedFor": ["fungal infections"],
+  "description": "Used for skin and nail fungal infections (educational).",
+  "commonSideEffects": ["headache"],
+  "importantNotes": ["Complete treatment course"]
+},
+{
+  "name": "Fluconazole",
+  "category": "Antifungal",
+  "usedFor": ["fungal infections"],
+  "description": "An oral antifungal medication (educational).",
+  "commonSideEffects": ["nausea"],
+  "importantNotes": ["Prescription may be required"]
+},
+{
+  "name": "Ibuprofen gel",
+  "category": "Pain relief",
+  "usedFor": ["muscle pain", "joint pain"],
+  "description": "Topical anti-inflammatory gel (educational).",
+  "commonSideEffects": ["skin irritation"],
+  "importantNotes": ["Apply to affected area"]
+},
+{
+  "name": "Paracetamol + codeine",
+  "category": "Pain relief",
+  "usedFor": ["moderate pain"],
+  "description": "Combination pain relief medicine (educational).",
+  "commonSideEffects": ["drowsiness", "constipation"],
+  "importantNotes": ["Use short-term"]
+}
+
+
+
+]

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HealthConnect | Search</title>
+  <title>HealthConnect | Medicine Search</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -19,8 +19,8 @@
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link is-active" href="choose-search.html">Search</a>
         <a class="nav-link" href="results.html">Results</a>
-        <a class="nav-link" href="saved.html">Saved</a>
         <a class="nav-link" href="history.html">History</a>
+        <a class="nav-link" href="saved.html">Saved</a>
         <a class="nav-link" href="disclaimer.html">Disclaimer</a>
       </nav>
     </div>
@@ -28,45 +28,44 @@
 
   <main class="page">
     <section class="card card-lg">
-    <div class="title-row">
-  <h1 class="h1">Symptom Search</h1>
+      <div class="title-row">
+        <div>
+          <h1 class="h1">Medicine Search</h1>
 
-  <div class="title-actions">
-    <button class="btn compare-btn" onclick="window.location.href='compare.html'">
-      Compare
-    </button>
+          <p class="lead">
+            Search for common medicines and see what they are generally used for.
+            This section is educational only and does not provide prescribing advice.
+          </p>
+        </div>
 
-  </div>
-</div>
+        <div class="title-actions">
+          <a class="btn compare-btn" href="compare-medicines.html">Compare</a>
+        </div>
+      </div>
 
-      <p class="lead">
-        Enter one symptom or multiple symptoms separated by commas.
-        This tool is for learning only.
-      </p>
+      <p id="medicineStatus" class="small">Loading medicines...</p>
 
-      <p id="status" class="small">Loading dataset...</p>
-
-      <label class="label" for="q">Symptoms</label>
+      <label class="label" for="medicineQ">Medicine name or use</label>
       <input
-        id="q"
+        id="medicineQ"
         class="input"
         type="text"
-        placeholder="e.g. headache, nausea, light sensitivity"
+        placeholder="e.g. paracetamol, allergy, antibiotics, heartburn"
         autocomplete="off"
       />
 
-      <label class="label" for="area" style="margin-top: 12px;">Body area</label>
-      <select id="area" class="select">
+      <label class="label" for="medicineCategory" style="margin-top: 12px;">Medicine category</label>
+      <select id="medicineCategory" class="select">
         <option value="all">All</option>
       </select>
 
       <div style="margin-top: 14px;">
         <p class="small"><strong>Examples (click to autofill):</strong></p>
-        <div id="examples" class="chip-row"></div>
+        <div id="medicineExamples" class="chip-row"></div>
       </div>
 
       <div class="actions" style="margin-top: 18px;">
-        <button id="searchBtn" class="btn" type="button">Search</button>
+        <button id="medicineSearchBtn" class="btn" type="button">Search medicines</button>
         <a class="btn btn-secondary" href="disclaimer.html">Read disclaimer</a>
       </div>
     </section>
@@ -81,6 +80,6 @@
     </div>
   </footer>
 
-  <script src="js/app.js"></script>
+  <script src="js/medicines.js"></script>
 </body>
 </html>

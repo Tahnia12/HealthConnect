@@ -106,5 +106,706 @@
     "symptoms": ["lower back pain", "stiffness", "pain when bending", "muscle tightness"],
     "keywords": ["back pain", "posture", "lower back"],
     "educationalRemedies": ["Posture breaks", "Gentle stretching", "Heat pack (educational)"]
-  }
+  },
+  {
+    "name": "Knee strain",
+    "bodyArea": "Muscles / Joints",
+    "description": "Knee discomfort linked to overuse, awkward movement or minor strain (educational).",
+    "symptoms": ["knee pain", "swelling", "stiffness", "pain walking", "tenderness"],
+    "keywords": ["knee strain", "knee pain", "joint strain"],
+    "educationalRemedies": ["Rest", "Cold pack (educational)", "Avoid heavy impact temporarily"]
+  },
+  {
+    "name": "Ankle sprain",
+    "bodyArea": "Muscles / Joints",
+    "description": "A twist injury of the ankle that may cause swelling and pain (educational).",
+    "symptoms": ["ankle pain", "swelling", "bruising", "pain walking", "tenderness"],
+    "keywords": ["ankle sprain", "twisted ankle", "ankle injury"],
+    "educationalRemedies": ["Rest", "Cold pack (educational)", "Elevation (educational)"]
+  },
+
+  {
+    "name": "Stress-related fatigue",
+    "bodyArea": "General",
+    "description": "Low energy or tiredness sometimes linked to stress, poor sleep or overload (educational).",
+    "symptoms": ["fatigue", "poor sleep", "stress", "difficulty concentrating", "headache"],
+    "keywords": ["stress", "tiredness", "fatigue"],
+    "educationalRemedies": ["Sleep routine", "Regular breaks", "Hydration and balanced meals (educational)"]
+  },
+  {
+    "name": "Mild dehydration symptoms",
+    "bodyArea": "General",
+    "description": "Low fluid intake may lead to tiredness, dizziness or headache (educational).",
+    "symptoms": ["headache", "dizziness", "dry mouth", "fatigue", "thirst"],
+    "keywords": ["dehydration", "thirst", "dry mouth"],
+    "educationalRemedies": ["Drink fluids regularly", "Avoid excessive caffeine", "Rest in a cool place (educational)"]
+  },
+  {
+    "name": "Poor sleep-related symptoms",
+    "bodyArea": "General",
+    "description": "Tiredness and reduced focus related to limited or disrupted sleep (educational).",
+    "symptoms": ["fatigue", "headache", "irritability", "difficulty concentrating", "sleepiness"],
+    "keywords": ["poor sleep", "sleep deprivation", "tiredness"],
+    "educationalRemedies": ["Keep regular sleep schedule", "Reduce screens before bed", "Limit late caffeine (educational)"]
+  },
+  {
+    "name": "Mild anxiety-related symptoms",
+    "bodyArea": "General",
+    "description": "Stress or anxiety can affect the body and may cause physical symptoms (educational).",
+    "symptoms": ["palpitations", "restlessness", "fatigue", "chest tightness", "difficulty sleeping"],
+    "keywords": ["anxiety", "stress", "restlessness"],
+    "educationalRemedies": ["Slow breathing exercises", "Reduce stimulants", "Rest and routine (educational)"]
+  },
+
+  {
+    "name": "Non-specific chest discomfort",
+    "bodyArea": "Chest",
+    "description": "Mild chest discomfort can occur for different non-emergency reasons, but persistent or severe symptoms need urgent review (educational).",
+    "symptoms": ["chest pain", "chest tightness", "discomfort", "pain moving", "tenderness"],
+    "keywords": ["chest discomfort", "chest pain", "tight chest"],
+    "educationalRemedies": ["Rest", "Monitor symptoms carefully", "Seek urgent help if severe or worsening"]
+  },
+  {
+    "name": "Chest wall strain",
+    "bodyArea": "Chest",
+    "description": "Chest area muscle strain that may feel worse with movement or coughing (educational).",
+    "symptoms": ["chest pain", "pain moving", "tenderness", "pain coughing", "muscle ache"],
+    "keywords": ["chest wall pain", "muscle strain", "rib muscle pain"],
+    "educationalRemedies": ["Rest", "Avoid heavy activity", "Gentle movement as tolerated (educational)"]
+  },
+
+  {
+    "name": "Earache irritation",
+    "bodyArea": "Head & Face",
+    "description": "Ear discomfort that may occur with irritation, pressure or mild infection symptoms (educational).",
+    "symptoms": ["ear pain", "pressure", "reduced hearing", "pain jaw movement"],
+    "keywords": ["earache", "ear pain", "ear pressure"],
+    "educationalRemedies": ["Rest", "Avoid inserting anything into ear", "Monitor symptoms (educational)"]
+  },
+  {
+    "name": "Mild dizziness symptoms",
+    "bodyArea": "General",
+    "description": "A lightheaded or dizzy feeling that may have several minor causes such as dehydration or fatigue (educational).",
+    "symptoms": ["dizziness", "lightheadedness", "fatigue", "nausea", "unsteadiness"],
+    "keywords": ["dizzy", "lightheaded", "unsteady"],
+    "educationalRemedies": ["Sit down and rest", "Hydration", "Stand up slowly (educational)"]
+  },
+{
+  "name": "Asthma symptoms",
+  "bodyArea": "Respiratory",
+  "description": "A condition affecting the airways that may cause breathing difficulty (educational).",
+  "symptoms": ["shortness of breath", "wheezing", "cough", "chest tightness"],
+  "keywords": ["asthma", "breathing difficulty"],
+  "educationalRemedies": ["Avoid triggers", "Monitor breathing", "Seek medical advice if worsening"]
+},
+{
+  "name": "Bronchitis",
+  "bodyArea": "Respiratory",
+  "description": "Inflammation of the airways that can cause cough and mucus (educational).",
+  "symptoms": ["cough", "mucus", "fatigue", "shortness of breath"],
+  "keywords": ["bronchitis", "chest infection"],
+  "educationalRemedies": ["Rest", "Hydration", "Avoid smoke exposure"]
+},
+{
+  "name": "Pneumonia symptoms",
+  "bodyArea": "Respiratory",
+  "description": "A lung infection that may cause cough, fever, and breathing difficulty (educational).",
+  "symptoms": ["fever", "cough", "chest pain", "shortness of breath"],
+  "keywords": ["pneumonia", "lung infection"],
+  "educationalRemedies": ["Seek medical attention", "Rest", "Hydration"]
+},
+{
+  "name": "Urinary tract infection (UTI)",
+  "bodyArea": "Urinary",
+  "description": "An infection affecting the urinary system (educational).",
+  "symptoms": ["pain urinating", "frequent urination", "lower abdomen pain", "cloudy urine"],
+  "keywords": ["uti", "urinary infection"],
+  "educationalRemedies": ["Hydration", "Avoid irritants", "Seek medical advice"]
+},
+{
+  "name": "Menstrual cramps",
+  "bodyArea": "Abdomen",
+  "description": "Lower abdominal pain linked to menstrual cycle (educational).",
+  "symptoms": ["lower abdomen pain", "cramps", "back pain", "fatigue"],
+  "keywords": ["period pain", "menstrual cramps"],
+  "educationalRemedies": ["Heat pack", "Rest", "Gentle movement"]
+},
+{
+  "name": "Anemia symptoms",
+  "bodyArea": "General",
+  "description": "Low red blood cells leading to fatigue (educational).",
+  "symptoms": ["fatigue", "pale skin", "dizziness", "shortness of breath"],
+  "keywords": ["anemia", "low iron"],
+  "educationalRemedies": ["Balanced diet", "Iron-rich foods", "Seek medical advice"]
+},
+{
+  "name": "Diabetes symptoms",
+  "bodyArea": "General",
+  "description": "A condition affecting blood sugar levels (educational).",
+  "symptoms": ["increased thirst", "frequent urination", "fatigue", "blurred vision"],
+  "keywords": ["diabetes", "high blood sugar"],
+  "educationalRemedies": ["Monitor diet", "Stay active", "Seek medical guidance"]
+},
+{
+  "name": "Hypertension (high blood pressure)",
+  "bodyArea": "General",
+  "description": "Elevated blood pressure that may not always show symptoms (educational).",
+  "symptoms": ["headache", "dizziness", "nosebleeds"],
+  "keywords": ["hypertension", "blood pressure"],
+  "educationalRemedies": ["Reduce salt intake", "Exercise", "Regular checks"]
+},
+{
+  "name": "Depression-related symptoms",
+  "bodyArea": "Mental Health",
+  "description": "Low mood affecting daily life (educational).",
+  "symptoms": ["low mood", "fatigue", "sleep changes", "loss of interest"],
+  "keywords": ["depression", "low mood"],
+  "educationalRemedies": ["Talk to someone", "Routine", "Seek support"]
+},
+{
+  "name": "Anxiety disorder symptoms",
+  "bodyArea": "Mental Health",
+  "description": "Excessive worry that may affect physical health (educational).",
+  "symptoms": ["restlessness", "heart racing", "sweating", "fatigue"],
+  "keywords": ["anxiety", "panic"],
+  "educationalRemedies": ["Breathing exercises", "Limit caffeine", "Relaxation techniques"]
+},
+{
+  "name": "Eczema",
+  "bodyArea": "Skin",
+  "description": "A skin condition causing dryness and irritation (educational).",
+  "symptoms": ["itching", "dry skin", "redness", "rash"],
+  "keywords": ["eczema", "skin irritation"],
+  "educationalRemedies": ["Moisturise", "Avoid irritants", "Gentle skincare"]
+},
+{
+  "name": "Acne",
+  "bodyArea": "Skin",
+  "description": "A common skin condition affecting hair follicles (educational).",
+  "symptoms": ["spots", "oily skin", "pimples"],
+  "keywords": ["acne", "spots"],
+  "educationalRemedies": ["Gentle cleansing", "Avoid picking skin"]
+},
+{
+  "name": "Psoriasis",
+  "bodyArea": "Skin",
+  "description": "A condition causing red, scaly skin patches (educational).",
+  "symptoms": ["red patches", "scaly skin", "itching"],
+  "keywords": ["psoriasis", "skin condition"],
+  "educationalRemedies": ["Moisturise", "Avoid triggers"]
+},
+{
+  "name": "Conjunctivitis",
+  "bodyArea": "Eyes",
+  "description": "Eye inflammation often causing redness and discharge (educational).",
+  "symptoms": ["red eyes", "itching", "discharge"],
+  "keywords": ["pink eye", "conjunctivitis"],
+  "educationalRemedies": ["Clean eyes gently", "Avoid touching eyes"]
+},
+{
+  "name": "Food poisoning",
+  "bodyArea": "Digestive",
+  "description": "Illness caused by contaminated food (educational).",
+  "symptoms": ["vomiting", "diarrhoea", "stomach pain", "fever"],
+  "keywords": ["food poisoning", "contaminated food"],
+  "educationalRemedies": ["Hydration", "Rest"]
+},
+{
+  "name": "Appendicitis symptoms",
+  "bodyArea": "Abdomen",
+  "description": "Inflammation of the appendix (educational awareness).",
+  "symptoms": ["severe stomach pain", "fever", "nausea"],
+  "keywords": ["appendicitis"],
+  "educationalRemedies": ["Seek urgent medical help"]
+},
+{
+  "name": "Kidney stone symptoms",
+  "bodyArea": "Urinary",
+  "description": "Hard deposits in the kidney that can cause pain (educational).",
+  "symptoms": ["severe side pain", "blood in urine", "nausea"],
+  "keywords": ["kidney stones"],
+  "educationalRemedies": ["Hydration", "Seek medical advice"]
+},
+{
+  "name": "Gallstones",
+  "bodyArea": "Digestive",
+  "description": "Solid deposits in the gallbladder (educational).",
+  "symptoms": ["upper abdominal pain", "nausea", "bloating"],
+  "keywords": ["gallstones"],
+  "educationalRemedies": ["Avoid fatty foods", "Seek medical advice"]
+},
+{
+  "name": "Thyroid imbalance symptoms",
+  "bodyArea": "General",
+  "description": "Hormonal imbalance affecting metabolism (educational).",
+  "symptoms": ["fatigue", "weight changes", "temperature sensitivity"],
+  "keywords": ["thyroid"],
+  "educationalRemedies": ["Seek medical advice"]
+},
+{
+  "name": "Vertigo",
+  "bodyArea": "General",
+  "description": "A sensation of spinning or dizziness (educational).",
+  "symptoms": ["dizziness", "balance issues", "nausea"],
+  "keywords": ["vertigo"],
+  "educationalRemedies": ["Sit still", "Avoid sudden movement"]
+}
+,
+{
+  "name": "Allergic rhinitis",
+  "bodyArea": "Respiratory (Nose/Throat)",
+  "description": "Allergic reaction affecting the nose (educational).",
+  "symptoms": ["sneezing", "runny nose", "itchy eyes"],
+  "keywords": ["hay fever", "allergy"],
+  "educationalRemedies": ["Avoid allergens", "Keep windows closed"]
+},
+{
+  "name": "Hay fever",
+  "bodyArea": "Respiratory (Nose/Throat)",
+  "description": "Seasonal allergies caused by pollen (educational).",
+  "symptoms": ["sneezing", "itchy eyes", "runny nose"],
+  "keywords": ["pollen allergy"],
+  "educationalRemedies": ["Limit outdoor exposure", "Shower after outside"]
+},
+{
+  "name": "Dry eye syndrome",
+  "bodyArea": "Eyes",
+  "description": "Reduced tear production causing irritation (educational).",
+  "symptoms": ["dry eyes", "irritation", "blurred vision"],
+  "keywords": ["dry eye"],
+  "educationalRemedies": ["Blink regularly", "Take screen breaks"]
+},
+{
+  "name": "Eye strain",
+  "bodyArea": "Eyes",
+  "description": "Discomfort from prolonged screen use (educational).",
+  "symptoms": ["eye pain", "blurred vision", "headache"],
+  "keywords": ["screen fatigue"],
+  "educationalRemedies": ["20-20-20 rule", "Reduce screen time"]
+},
+{
+  "name": "Nasal dryness",
+  "bodyArea": "Respiratory",
+  "description": "Dryness inside the nose (educational).",
+  "symptoms": ["dry nose", "irritation"],
+  "keywords": ["nasal dryness"],
+  "educationalRemedies": ["Humidifier", "Hydration"]
+},
+{
+  "name": "Blocked ear",
+  "bodyArea": "Head & Face",
+  "description": "Feeling of fullness in the ear (educational).",
+  "symptoms": ["ear pressure", "reduced hearing"],
+  "keywords": ["ear blockage"],
+  "educationalRemedies": ["Yawning", "Swallowing"]
+},
+{
+  "name": "Tinnitus",
+  "bodyArea": "Head & Face",
+  "description": "Ringing in the ears (educational).",
+  "symptoms": ["ringing", "buzzing"],
+  "keywords": ["ear ringing"],
+  "educationalRemedies": ["Avoid loud noise"]
+},
+{
+  "name": "Toothache",
+  "bodyArea": "Head & Face",
+  "description": "Pain in or around a tooth (educational).",
+  "symptoms": ["tooth pain", "sensitivity"],
+  "keywords": ["dental pain"],
+  "educationalRemedies": ["Oral hygiene", "Avoid sugary foods"]
+},
+{
+  "name": "Gum irritation",
+  "bodyArea": "Head & Face",
+  "description": "Inflamed gums (educational).",
+  "symptoms": ["gum pain", "bleeding"],
+  "keywords": ["gum disease"],
+  "educationalRemedies": ["Brush gently", "Floss"]
+},
+{
+  "name": "Neck strain",
+  "bodyArea": "Neck",
+  "description": "Muscle strain in the neck (educational).",
+  "symptoms": ["neck pain", "stiffness"],
+  "keywords": ["neck pain"],
+  "educationalRemedies": ["Stretching", "Posture correction"]
+},
+{
+  "name": "Shoulder pain",
+  "bodyArea": "Muscles / Joints",
+  "description": "Pain around the shoulder (educational).",
+  "symptoms": ["shoulder pain", "limited movement"],
+  "keywords": ["shoulder strain"],
+  "educationalRemedies": ["Rest", "Gentle movement"]
+},
+{
+  "name": "Frozen shoulder",
+  "bodyArea": "Muscles / Joints",
+  "description": "Stiffness and pain in shoulder (educational).",
+  "symptoms": ["stiffness", "pain"],
+  "keywords": ["frozen shoulder"],
+  "educationalRemedies": ["Stretching", "Movement exercises"]
+},
+{
+  "name": "Sciatica",
+  "bodyArea": "Back",
+  "description": "Nerve pain from lower back (educational).",
+  "symptoms": ["back pain", "leg pain"],
+  "keywords": ["sciatica"],
+  "educationalRemedies": ["Stretching", "Posture care"]
+},
+{
+  "name": "Upper back strain",
+  "bodyArea": "Back",
+  "description": "Muscle strain in upper back (educational).",
+  "symptoms": ["upper back pain"],
+  "keywords": ["back strain"],
+  "educationalRemedies": ["Rest", "Stretch"]
+},
+{
+  "name": "Hip pain",
+  "bodyArea": "Muscles / Joints",
+  "description": "Pain around hip joint (educational).",
+  "symptoms": ["hip pain"],
+  "keywords": ["hip issue"],
+  "educationalRemedies": ["Rest", "Gentle movement"]
+},
+{
+  "name": "Leg cramps",
+  "bodyArea": "Muscles / Joints",
+  "description": "Sudden muscle contractions (educational).",
+  "symptoms": ["cramps", "pain"],
+  "keywords": ["muscle cramp"],
+  "educationalRemedies": ["Stretch", "Hydration"]
+},
+{
+  "name": "Foot pain",
+  "bodyArea": "Feet",
+  "description": "Pain in foot (educational).",
+  "symptoms": ["foot pain"],
+  "keywords": ["foot strain"],
+  "educationalRemedies": ["Rest", "Supportive shoes"]
+},
+{
+  "name": "Heel pain",
+  "bodyArea": "Feet",
+  "description": "Pain in heel area (educational).",
+  "symptoms": ["heel pain"],
+  "keywords": ["heel issue"],
+  "educationalRemedies": ["Rest", "Foot support"]
+},
+{
+  "name": "Plantar fasciitis",
+  "bodyArea": "Feet",
+  "description": "Heel pain due to tissue strain (educational).",
+  "symptoms": ["heel pain"],
+  "keywords": ["plantar fasciitis"],
+  "educationalRemedies": ["Stretching", "Supportive shoes"]
+},
+{
+  "name": "Mild rash",
+  "bodyArea": "Skin",
+  "description": "General skin rash (educational).",
+  "symptoms": ["redness", "itching"],
+  "keywords": ["rash"],
+  "educationalRemedies": ["Avoid irritants"]
+},
+{
+  "name": "Sunburn",
+  "bodyArea": "Skin",
+  "description": "Skin damage from sun exposure (educational).",
+  "symptoms": ["red skin", "pain"],
+  "keywords": ["sunburn"],
+  "educationalRemedies": ["Cool skin", "Hydrate"]
+},
+{
+  "name": "Insect bite reaction",
+  "bodyArea": "Skin",
+  "description": "Reaction to bites (educational).",
+  "symptoms": ["itching", "swelling"],
+  "keywords": ["bite"],
+  "educationalRemedies": ["Avoid scratching"]
+},
+{
+  "name": "Cold sores",
+  "bodyArea": "Head & Face",
+  "description": "Viral sores around mouth (educational).",
+  "symptoms": ["blisters"],
+  "keywords": ["cold sore"],
+  "educationalRemedies": ["Keep clean"]
+},
+{
+  "name": "Nausea (general)",
+  "bodyArea": "Digestive",
+  "description": "Feeling of sickness (educational).",
+  "symptoms": ["nausea"],
+  "keywords": ["queasy"],
+  "educationalRemedies": ["Rest", "Hydration"]
+},
+{
+  "name": "Bloating",
+  "bodyArea": "Digestive",
+  "description": "Full feeling in abdomen (educational).",
+  "symptoms": ["bloating"],
+  "keywords": ["gas"],
+  "educationalRemedies": ["Light meals"]
+},
+{
+  "name": "Constipation",
+  "bodyArea": "Digestive",
+  "description": "Difficulty passing stools (educational).",
+  "symptoms": ["constipation"],
+  "keywords": ["bowel"],
+  "educationalRemedies": ["Fiber", "Hydration"]
+},
+{
+  "name": "Diarrhoea (mild)",
+  "bodyArea": "Digestive",
+  "description": "Loose stools (educational).",
+  "symptoms": ["diarrhoea"],
+  "keywords": ["loose stool"],
+  "educationalRemedies": ["Hydration"]
+},
+{
+  "name": "Gas discomfort",
+  "bodyArea": "Digestive",
+  "description": "Trapped gas (educational).",
+  "symptoms": ["gas", "pain"],
+  "keywords": ["gas"],
+  "educationalRemedies": ["Gentle movement"]
+},
+{
+  "name": "Heartburn",
+  "bodyArea": "Digestive",
+  "description": "Burning sensation in chest (educational).",
+  "symptoms": ["burning chest"],
+  "keywords": ["acid reflux"],
+  "educationalRemedies": ["Avoid trigger foods"]
+},
+{
+  "name": "Motion sickness",
+  "bodyArea": "General",
+  "description": "Sickness from movement (educational).",
+  "symptoms": ["nausea", "dizziness"],
+  "keywords": ["motion sickness"],
+  "educationalRemedies": ["Focus ahead"]
+},
+{
+  "name": "Heat exhaustion",
+  "bodyArea": "General",
+  "description": "Overheating (educational).",
+  "symptoms": ["fatigue", "dizziness"],
+  "keywords": ["heat"],
+  "educationalRemedies": ["Cool down"]
+},
+{
+  "name": "Cold sensitivity",
+  "bodyArea": "General",
+  "description": "Sensitivity to cold (educational).",
+  "symptoms": ["cold intolerance"],
+  "keywords": ["cold"],
+  "educationalRemedies": ["Keep warm"]
+},
+{
+  "name": "Mild fever",
+  "bodyArea": "General",
+  "description": "Slight increase in temperature (educational).",
+  "symptoms": ["fever"],
+  "keywords": ["temperature"],
+  "educationalRemedies": ["Rest", "Hydration"]
+},
+{
+  "name": "Fatigue (general)",
+  "bodyArea": "General",
+  "description": "General tiredness (educational).",
+  "symptoms": ["fatigue"],
+  "keywords": ["tired"],
+  "educationalRemedies": ["Rest"]
+},
+{
+  "name": "Palpitations (mild)",
+  "bodyArea": "Chest",
+  "description": "Awareness of heartbeat (educational).",
+  "symptoms": ["palpitations"],
+  "keywords": ["heart racing"],
+  "educationalRemedies": ["Relax"]
+},
+{
+  "name": "Mild cough",
+  "bodyArea": "Respiratory",
+  "description": "General cough (educational).",
+  "symptoms": ["cough"],
+  "keywords": ["cough"],
+  "educationalRemedies": ["Warm drinks"]
+},
+{
+  "name": "Dry cough",
+  "bodyArea": "Respiratory",
+  "description": "Cough without mucus (educational).",
+  "symptoms": ["dry cough"],
+  "keywords": ["dry"],
+  "educationalRemedies": ["Hydration"]
+},
+{
+  "name": "Productive cough",
+  "bodyArea": "Respiratory",
+  "description": "Cough with mucus (educational).",
+  "symptoms": ["mucus"],
+  "keywords": ["phlegm"],
+  "educationalRemedies": ["Rest"]
+},
+{
+  "name": "Seasonal affective symptoms",
+  "bodyArea": "Mental Health",
+  "description": "Mood changes linked to seasonal light changes (educational).",
+  "symptoms": ["low mood", "fatigue", "sleep changes"],
+  "keywords": ["seasonal depression", "SAD"],
+  "educationalRemedies": ["Increase daylight exposure", "Maintain routine"]
+},
+{
+  "name": "Panic attack symptoms",
+  "bodyArea": "Mental Health",
+  "description": "Sudden episodes of intense fear or discomfort (educational).",
+  "symptoms": ["heart racing", "sweating", "shortness of breath"],
+  "keywords": ["panic attack"],
+  "educationalRemedies": ["Slow breathing", "Sit down and rest"]
+},
+{
+  "name": "Irritable bowel symptoms",
+  "bodyArea": "Digestive",
+  "description": "Digestive discomfort linked to bowel sensitivity (educational).",
+  "symptoms": ["bloating", "cramps", "diarrhoea", "constipation"],
+  "keywords": ["IBS"],
+  "educationalRemedies": ["Monitor diet", "Reduce stress"]
+},
+{
+  "name": "Acid reflux symptoms",
+  "bodyArea": "Digestive",
+  "description": "Stomach acid flowing back into the oesophagus (educational).",
+  "symptoms": ["heartburn", "chest discomfort"],
+  "keywords": ["reflux"],
+  "educationalRemedies": ["Avoid large meals", "Stay upright after eating"]
+},
+{
+  "name": "Food intolerance symptoms",
+  "bodyArea": "Digestive",
+  "description": "Difficulty digesting certain foods (educational).",
+  "symptoms": ["bloating", "gas", "stomach discomfort"],
+  "keywords": ["food intolerance"],
+  "educationalRemedies": ["Identify trigger foods"]
+},
+{
+  "name": "Dehydration (moderate)",
+  "bodyArea": "General",
+  "description": "More noticeable fluid loss symptoms (educational).",
+  "symptoms": ["dizziness", "dry mouth", "fatigue"],
+  "keywords": ["dehydration"],
+  "educationalRemedies": ["Increase fluid intake"]
+},
+{
+  "name": "Low blood sugar symptoms",
+  "bodyArea": "General",
+  "description": "Drop in blood sugar levels (educational).",
+  "symptoms": ["shaking", "sweating", "dizziness"],
+  "keywords": ["hypoglycaemia"],
+  "educationalRemedies": ["Eat quickly absorbed carbohydrates"]
+},
+{
+  "name": "High blood sugar symptoms",
+  "bodyArea": "General",
+  "description": "Elevated blood sugar levels (educational).",
+  "symptoms": ["thirst", "frequent urination", "fatigue"],
+  "keywords": ["hyperglycaemia"],
+  "educationalRemedies": ["Monitor levels"]
+},
+{
+  "name": "Muscle soreness (delayed)",
+  "bodyArea": "Muscles / Joints",
+  "description": "Pain after exercise (educational).",
+  "symptoms": ["muscle pain", "stiffness"],
+  "keywords": ["DOMS"],
+  "educationalRemedies": ["Rest", "Stretch"]
+},
+{
+  "name": "Joint stiffness",
+  "bodyArea": "Muscles / Joints",
+  "description": "Reduced flexibility in joints (educational).",
+  "symptoms": ["stiffness"],
+  "keywords": ["joint stiffness"],
+  "educationalRemedies": ["Gentle movement"]
+},
+{
+  "name": "Hand strain",
+  "bodyArea": "Arms & Hands",
+  "description": "Overuse injury in the hand (educational).",
+  "symptoms": ["hand pain", "weakness"],
+  "keywords": ["hand strain"],
+  "educationalRemedies": ["Rest", "Avoid repetitive movement"]
+},
+{
+  "name": "Finger sprain",
+  "bodyArea": "Arms & Hands",
+  "description": "Minor injury to finger ligaments (educational).",
+  "symptoms": ["finger pain", "swelling"],
+  "keywords": ["finger injury"],
+  "educationalRemedies": ["Rest", "Cold pack"]
+},
+{
+  "name": "Toe pain",
+  "bodyArea": "Feet",
+  "description": "Pain affecting toes (educational).",
+  "symptoms": ["toe pain"],
+  "keywords": ["toe injury"],
+  "educationalRemedies": ["Rest", "Proper footwear"]
+},
+{
+  "name": "Blister",
+  "bodyArea": "Skin",
+  "description": "Fluid-filled skin irritation (educational).",
+  "symptoms": ["blister", "pain"],
+  "keywords": ["friction blister"],
+  "educationalRemedies": ["Protect area", "Keep clean"]
+},
+{
+  "name": "Chapped lips",
+  "bodyArea": "Skin",
+  "description": "Dry cracked lips (educational).",
+  "symptoms": ["dry lips", "cracks"],
+  "keywords": ["chapped lips"],
+  "educationalRemedies": ["Moisturise", "Hydration"]
+},
+{
+  "name": "Nasal congestion",
+  "bodyArea": "Respiratory",
+  "description": "Blocked nasal passages (educational).",
+  "symptoms": ["blocked nose"],
+  "keywords": ["congestion"],
+  "educationalRemedies": ["Steam inhalation"]
+},
+{
+  "name": "Runny nose",
+  "bodyArea": "Respiratory",
+  "description": "Excess nasal discharge (educational).",
+  "symptoms": ["runny nose"],
+  "keywords": ["rhinorrhea"],
+  "educationalRemedies": ["Hydration"]
+},
+{
+  "name": "Hoarseness",
+  "bodyArea": "Respiratory",
+  "description": "Change in voice tone (educational).",
+  "symptoms": ["hoarse voice"],
+  "keywords": ["voice change"],
+  "educationalRemedies": ["Rest voice"]
+},
+{
+  "name": "Swollen lymph nodes",
+  "bodyArea": "General",
+  "description": "Swelling of glands often linked to infection (educational).",
+  "symptoms": ["swelling", "tenderness"],
+  "keywords": ["glands"],
+  "educationalRemedies": ["Rest", "Monitor symptoms"]
+}
 ]
+ 
